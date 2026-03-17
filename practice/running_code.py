@@ -1,6 +1,10 @@
-import code_problems as problem
-import sys, io
-import helper_functions.verify_environment as ve
+import sys
+sys.path.insert(0, __file__.rsplit('\\', 1)[0].rsplit('\\', 1)[0])
+
+import code_problems as Problem
+from helper_functions import verify_environment as VE
+from helper_functions import hint as hint
+import io
 
 def see_only_output(func):
     """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
@@ -13,8 +17,9 @@ def see_only_output(func):
 
 
 if __name__ == "__main__":
-    verify = ve.Verify_Environment()
-    problems = problem.Code_Problems()
+    verify = VE.Verify_Environment()
+    problems = Problem.Code_Problems()
+    hint = hint.Hint()
     
     """
     Here is the main function that will run your code. You can change the problem number to run different problems.
@@ -34,9 +39,11 @@ if __name__ == "__main__":
     
     # ------------------------------------------------------------------- #
     # ------------------------------------------------------------------- #
-    # ------------------------------------------------------------------- #
-    # ------------------------------------------------------------------- #
+    """If you require a hint, uncomment the line below and run the file."""
+    # hint.hint()
     
+    # ------------------------------------------------------------------- #
+    # ------------------------------------------------------------------- #
     
     
     

@@ -1,5 +1,5 @@
-import helper_functions.ProblemStatement as ProblemStatement
-ps = ProblemStatement.ProblemStatement()
+from helper_functions import ProblemStatement
+ps = ProblemStatement()
 
 
 class Code_Problems:

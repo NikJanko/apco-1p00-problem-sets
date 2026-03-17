@@ -1,5 +1,6 @@
 *.pdf
 aiders for nik/
+__pycache__/
 practice/__pycache__/
 practice/files/
 practice/generated_files/

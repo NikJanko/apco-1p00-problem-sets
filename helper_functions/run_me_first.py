@@ -96,7 +96,7 @@ class Run_Me_First:
         path = os.path.join(dir_name, "data_solo.txt")
         try:
             with open(path, 'w') as f:
-                f.write("20\n")
+                f.write("5\n")
                 f.write("13\n")
                 f.write("8")
             # print(f"File '{path}' created and data written successfully.")

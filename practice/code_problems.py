@@ -13,21 +13,39 @@ class Code_Problems:
             "final_1": self.final_1, "final_2": self.final_2, "final_3": self.final_3
         }
         """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
-    def run_problem(self, problem_number):
+    def run_problem(self, problem_number, *args, **kwargs):
         """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
         if problem_number in self.problem_dict:
-            self.problem_dict[problem_number]()
+            sanitized_args = self._sanitize_args(args, problem_number)
+            self.problem_dict[problem_number](sanitized_args, **kwargs)
         else:
             print("Problem number not found. Please choose a valid problem number.")
         """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
+    
+    def _sanitize_args(self, args, problem_number):
+        """Sanitize and validate input arguments."""
+        # if problem_number == 1:
+        #     if isinstance(args[0], str):
+        #         args[0] = args[0].strip()
 
-    def one(self):
+        # if not args:
+        #     return None
+
+        return args
+        
+        
+    """
+    START Under HERE
+    """
+    
+
+    def one(self, test_arg):
         ps.display(1)
         """
         Add your code here.
         """
         
-        return 
+        return test_arg
 
     def two(self):
         ps.display(2)

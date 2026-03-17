@@ -1,4 +1,5 @@
 import os
+import shutil
 import helper_functions.run_me_first as rmf
 
 """
@@ -12,7 +13,17 @@ class Verify_Environment:
         self.dir_name2 = "generated_files"
         
         self.run = rmf.Run_Me_First(dir_name=self.dir_name, dir_name2=self.dir_name2)
-        self.verify_environment(dir_name=self.dir_name, dir_name2=self.dir_name2)
+        # self.verify_environment(dir_name=self.dir_name, dir_name2=self.dir_name2)
+        
+    def fix_files(self):
+        print("Fixing files and folders by deleting them and re-creating them.")
+        if os.path.isdir(self.dir_name):
+            shutil.rmtree(self.dir_name)
+        
+        if os.path.isdir(self.dir_name2):
+            shutil.rmtree(self.dir_name2)
+        
+        # self.run.create_files(dir_name=self.dir_name, dir_name2=self.dir_name2)
     
     def verify_environment(self, dir_name, dir_name2):
         # Check if the 'files' directory exists

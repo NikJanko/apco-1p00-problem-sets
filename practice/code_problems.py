@@ -4,23 +4,21 @@ ps = ProblemStatement()
 
 class Code_Problems:
     def __init__(self):
-        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
-        self.problem_dict = {
+        self.question = {
             1: self.one, 2: self.two, 3: self.three, 4: self.four, 5: self.five, 6: self.six, 7: self.seven, 8: self.eight, 9: self.nine, 10: self.ten, 11: self.eleven, 12: self.twelve, 13: self.thirteen, 14: self.fourteen, 15: self.fifteen, 16: self.sixteen, 17: self.seventeen, 18: self.eighteen, 19: self.nineteen, 20: self.twenty, 21: self.twenty_one, 22: self.twenty_two, 23: self.twenty_three, 24: self.twenty_four, 25: self.twenty_five, 26: self.twenty_six, 27: self.twenty_seven, 28: self.twenty_eight, 29: self.twenty_nine,
             
-            "fix_me_1": self.fix_me_1, "fix_me_2": self.fix_me_2, "fix_me_3": self.fix_me_3, "fix_me_4": self.fix_me_4, "fix_me_5": self.fix_me_5, "fix_me_6": self.fix_me_6, "fix_me_7": self.fix_me_7, "fix_me_8": self.fix_me_8, "fix_me_9": self.fix_me_9, "fix_me_10": self.fix_me_10,
+            30: self.fix_me_1, 31: self.fix_me_2, 32: self.fix_me_3, 33: self.fix_me_4, 34: self.fix_me_5, 35: self.fix_me_6, 36: self.fix_me_7, 37: self.fix_me_8, 38: self.fix_me_9, 39: self.fix_me_10,
             
-            "final_1": self.final_1, "final_2": self.final_2, "final_3": self.final_3
+            40: self.final_1, 41: self.final_2, 42: self.final_3
         }
-        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
+        
     def run_problem(self, problem_number, *args, **kwargs):
-        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
-        if problem_number in self.problem_dict:
+        if problem_number in self.question:
             sanitized_args = self._sanitize_args(args, problem_number)
-            self.problem_dict[problem_number](sanitized_args, **kwargs)
+            # self.problem_dict[problem_number](sanitized_args, **kwargs)
+            self.question[problem_number]()
         else:
             print("Problem number not found. Please choose a valid problem number.")
-        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
     
     def _sanitize_args(self, args, problem_number):
         """Sanitize and validate input arguments."""
@@ -35,7 +33,7 @@ class Code_Problems:
         
         
     """
-    START Under HERE
+    START CODING Under HERE
     """
     
 
@@ -218,11 +216,12 @@ class Code_Problems:
         Add your code here.
         """
 
-    def fix_me_1(self):
+    def fix_me_1(self, test_arg):
         ps.display("rest")
         """
         Add your code here.
         """
+        return 
 
     def fix_me_2(self):
         ps.display("rest")

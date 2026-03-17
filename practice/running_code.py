@@ -24,10 +24,14 @@ if __name__ == "__main__":
     """
     Here is the main function that will run your code. You can change the problem number to run different problems.
 
-    To see if you got the problem right, run the Test_Cases file. If you want to see hints, run the hint.py file. - all code should be done in the code_problems.py file.
-    You should only be change the problem number you want to run here.
-
-    all your solutions are imported via the code_problems import statement. Choose which problem you want to do by first selecting it here, running it (to see the problem statement), and then writing your code in the code_problems.py file.
+    You will only need to write the code in the code_problems.py file.
+    For hints, uncomment the hint line, 
+    to see only what is returned (without the problem statement), uncomment the see_only_output line and comment out the normal run_problem line.
+    if you messed up the file structure/files and nothing is working anymore, uncomment the fix_files line to reset the files to their original state (this will also reset the generated_files folder, so if you have files you want to keep, move them elsewhere before running this code).
+    
+    To test your code, uncomment the full_sweep line.
+    
+    Choose which problem you want to do by first selecting it here, running it (to see the problem statement), and then writing your code in the code_problems.py file.
 
     -------------------------------------------------------------------------------
     
@@ -45,21 +49,32 @@ if __name__ == "__main__":
     # ------------------------------------------------------------------- #
     # ------------------------------------------------------------------- #
     
-    # change the number to run different problems (1-29, fix_me_problems: 30-40, final_problems: 41-43)
-    problems.run_problem(1, 'arguments here')
-    
-    """
-    For some problems, you will need to return something, to avoid printing the problem statement each time, you can use the 'see_only_output()' function I have made. An example of its use is below. -> MAKE SURE TO COMMENT OUT THE LINE ABOVE 'problems.run_problem(n)' before using this function.
-    """
-    # print(see_only_output(problems.one, 'arguments here'))          #.one to .twenty_nine
-    # print(see_only_output(problems.fix_me_1, 'arguments here'))     #.fix_me_1 to .fix_me_10
-    # print(see_only_output(problems.final_1, 'arguments here'))      #.final_1 to .final_3
+    # change the number to run different problems (1-29, fix_me_problems: 30-39, final_problems: 40-42)
+    problems.run_problem(1)
     
     
     """
-    If something seriously messes up, uncomment the code below, run it then RE-COMMENT the code below. This will reset the files to their original state, so if you mess up the files, you can reset them by running this code. - this also resets the generated_files folder, so if you have files you want to keep, move them elsewhere before running this code.
+    to see only the returned value (what your code is being tested on), uncomment the line below and comment out the normal run_problem line above.
+    """
+    print(see_only_output(problems.question[1], 'arguments here')) 
+    
+    
+    """
+    To fix the files and folders (this will delete the 'files' and 'generated_files' folders and re-create them, so if you have files in there you want to keep, move them elsewhere before running this code):
+
     """
     # verify.fix_files()
+    
+    
+    
+    # ------------------------------------------------ #
+    """
+    in case you delete anything, these are the functions:
+    
+    # hint.ask_hint()
+    # print(see_only_output(problems.question[41], 'arguments here')) 
+    # verify.fix_files()
+    """
     
     
 

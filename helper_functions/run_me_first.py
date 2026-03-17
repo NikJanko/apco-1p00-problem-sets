@@ -8,7 +8,7 @@ class Run_Me_First:
     def __init__(self, dir_name="files", dir_name2="generated_files"):
         self.dir_name = dir_name
         self.dir_name2 = dir_name2
-        self.create_files(dir_name=self.dir_name, dir_name2=self.dir_name2)
+        # self.create_files(dir_name=self.dir_name, dir_name2=self.dir_name2)
     
     
     def create_files(self, dir_name, dir_name2):
@@ -23,8 +23,22 @@ class Run_Me_First:
             print(f"Permission denied: Unable to create directory '{dir_name}'.")
         except Exception as e:
             print(f"An error occurred while creating directory '{dir_name}': {e}")
-            
+
+
+
         # 
+        try:
+            os.mkdir(dir_name2)
+            # print(f"Directory '{dir_name2}' created successfully.")
+        except FileExistsError:
+            # print(f"Directory '{dir_name2}' already exists.")
+            pass
+        except PermissionError:
+            print(f"Permission denied: Unable to create directory '{dir_name2}'.")
+        except Exception as e:
+            print(f"An error occurred while creating directory '{dir_name2}': {e}")
+
+
 
         # 
         path = os.path.join(dir_name, "data_quad.txt")

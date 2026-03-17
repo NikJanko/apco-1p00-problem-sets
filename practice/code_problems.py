@@ -1,33 +1,33 @@
-import ProblemStatement
+import helper_functions.ProblemStatement as ProblemStatement
 ps = ProblemStatement.ProblemStatement()
 
 
 class Code_Problems:
     def __init__(self):
-        """Ignore this code. It is used to set up the problems for you."""
+        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
         self.problem_dict = {
             1: self.one, 2: self.two, 3: self.three, 4: self.four, 5: self.five, 6: self.six, 7: self.seven, 8: self.eight, 9: self.nine, 10: self.ten, 11: self.eleven, 12: self.twelve, 13: self.thirteen, 14: self.fourteen, 15: self.fifteen, 16: self.sixteen, 17: self.seventeen, 18: self.eighteen, 19: self.nineteen, 20: self.twenty, 21: self.twenty_one, 22: self.twenty_two, 23: self.twenty_three, 24: self.twenty_four, 25: self.twenty_five, 26: self.twenty_six, 27: self.twenty_seven, 28: self.twenty_eight, 29: self.twenty_nine,
             
-            
             "fix_me_1": self.fix_me_1, "fix_me_2": self.fix_me_2, "fix_me_3": self.fix_me_3, "fix_me_4": self.fix_me_4, "fix_me_5": self.fix_me_5, "fix_me_6": self.fix_me_6, "fix_me_7": self.fix_me_7, "fix_me_8": self.fix_me_8, "fix_me_9": self.fix_me_9, "fix_me_10": self.fix_me_10,
-            
             
             "final_1": self.final_1, "final_2": self.final_2, "final_3": self.final_3
         }
+        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
     def run_problem(self, problem_number):
-        """ignore this code as well."""
+        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
         if problem_number in self.problem_dict:
             self.problem_dict[problem_number]()
         else:
             print("Problem number not found. Please choose a valid problem number.")
+        """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
 
     def one(self):
         ps.display(1)
         """
         Add your code here.
         """
-        print("Hello, World!")
-        return "Hello, World!"
+        
+        return 
 
     def two(self):
         ps.display(2)

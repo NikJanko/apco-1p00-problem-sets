@@ -1,21 +1,21 @@
 import code_problems as problem
 import sys, io
-import verify_environment as ve
+import helper_functions.verify_environment as ve
 
 def see_only_output(func):
+    """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
     old_stdout = sys.stdout
     sys.stdout = io.StringIO()
-    
     result = func()
-    
     sys.stdout = old_stdout
-    
+    """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
     return result
 
 
 if __name__ == "__main__":
     verify = ve.Verify_Environment()
     problems = problem.Code_Problems()
+    
     """
     Here is the main function that will run your code. You can change the problem number to run different problems.
 

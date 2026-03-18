@@ -50,13 +50,13 @@ if __name__ == "__main__":
     # ------------------------------------------------------------------- #
     
     # change the number to run different problems (1-29, fix_me_problems: 30-39, final_problems: 40-42)
-    problems.run_problem(1)
+    # problems.run_problem(1)
     
     
     """
     to see only the returned value (what your code is being tested on), uncomment the line below and comment out the normal run_problem line above.
     """
-    print(see_only_output(problems.question[1], 'arguments here')) 
+    print(see_only_output(problems.question[38], 1)) 
     
     
     """

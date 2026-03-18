@@ -30,4 +30,19 @@ def itr_fib(n):
         a, b = b, c
     return b
 
-print(itr_fib(50))
+    # print(itr_fib(50))
+
+def fix_me_2(list=[1, 3, 6, 5, 5]):
+        # ps.display("rest")
+        """
+        reverse a list then print the reversed list. use insert and pop to do this
+        
+        error is one line, find and fix it.
+        """
+        arr = list
+        for i in arr:
+            arr.insert(i, arr.pop(-1))
+            
+        return arr
+
+print(fix_me_2())

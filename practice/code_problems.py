@@ -2,6 +2,9 @@ from helper_functions import ProblemStatement
 ps = ProblemStatement()
 
 
+ping_pong = 10
+pip = 100
+
 class Code_Problems:
     def __init__(self):
         self.question = {
@@ -37,13 +40,13 @@ class Code_Problems:
     """
     
 
-    def one(self, test_arg):
+    def one(self):
         ps.display(1)
         """
         Add your code here.
         """
         
-        return test_arg
+        return 
 
     def two(self):
         ps.display(2)
@@ -51,11 +54,15 @@ class Code_Problems:
         Add your code here.
         """
 
+        return
+
     def three(self):
         ps.display(3)
         """
         Add your code here.
-    """
+        """
+
+        return
 
     def four(self):
         ps.display(4)
@@ -69,17 +76,23 @@ class Code_Problems:
         Add your code here.
         """
 
+        return
+
     def six(self):
         ps.display(6)
         """
         Add your code here.
         """
 
-    def seven(self):
+        return
+
+    def seven(self, to_generate, max_bound):
         ps.display(7)
         """
         Add your code here.
         """
+
+        return
 
     def eight(self):
         ps.display(8)
@@ -87,29 +100,45 @@ class Code_Problems:
         Add your code here.
         """
 
+        return
+
     def nine(self):
         ps.display(9)
         """
         Add your code here.
         """
 
-    def ten(self):
+        return
+
+    def ten(self, phi, tolerance):
         ps.display(10)
         """
         Add your code here.
         """
+        def recurse_golden_ratio(phi, tolerance):
+            return 
 
-    def eleven(self):
+
+        return recurse_golden_ratio(phi, tolerance)
+
+    def eleven(self, nth_fib_digit):
         ps.display(11)
         """
         Add your code here.
         """
+        def recursive_fibonacci(n):
+            return
+        
 
-    def twelve(self):
+        return recursive_fibonacci(nth_fib_digit)
+
+    def twelve(self, nth_fib_digit):
         ps.display(12)
         """
         Add your code here.
         """
+
+        return
 
     def thirteen(self):
         ps.display(13)
@@ -117,18 +146,24 @@ class Code_Problems:
         Add your code here.
         """
 
+        return
 
-    def fourteen(self):
+
+    def fourteen(self, num_rows):
         ps.display(14)
         """
         Add your code here.
         """
 
-    def fifteen(self):
+        return False #return True when you believe you have the correct output.
+
+    def fifteen(self, asc=True):
         ps.display(15)
         """
         Add your code here.
         """
+
+        return 
 
     def sixteen(self):
         ps.display(16)
@@ -136,65 +171,122 @@ class Code_Problems:
         Add your code here.
         """
 
-    def seventeen(self):
+        return
+
+    def seventeen(self, stories=1, dimensions=[], triangle_height=0):
         ps.display(17)
         """
         Add your code here.
         """
+
+        return
 
     def eighteen(self):
         ps.display(18)
         """
         Add your code here.
         """
+        cipher_map = {
+            'A': 'Q',    'B': 'W',    'C': 'E',    'D': 'R',
+            'E': 'T',    'F': 'Y',    'G': 'U',    'H': 'I',
+            'I': 'O',    'J': 'P',    'K': 'A',    'L': 'S',
+            'M': 'D',    'N': 'F',    'O': 'G',    'P': 'H',
+            'Q': 'J',    'R': 'K',    'S': 'L',    'T': 'Z',
+            'U': 'X',    'V': 'C',    'W': 'V',    'X': 'B',
+            'Y': 'N',    'Z': 'M',    ' ': '-',    '-': ' '
+        }
+        
+        
+        
+
+        return
 
     def nineteen(self):
         ps.display(19)
         """
         Add your code here.
         """
+        cipher_map = {
+            'A': 'Q',    'B': 'W',    'C': 'E',    'D': 'R',
+            'E': 'T',    'F': 'Y',    'G': 'U',    'H': 'I',
+            'I': 'O',    'J': 'P',    'K': 'A',    'L': 'S',
+            'M': 'D',    'N': 'F',    'O': 'G',    'P': 'H',
+            'Q': 'J',    'R': 'K',    'S': 'L',    'T': 'Z',
+            'U': 'X',    'V': 'C',    'W': 'V',    'X': 'B',
+            'Y': 'N',    'Z': 'M',    ' ': '-',    '-': ' '
+        }
         
-    def twenty(self):
+
+        return
+        
+    def twenty(self, sentence, clear_text_word):
         ps.display(20)
         """
         Add your code here.
         """
 
-    def twenty_one(self):
+        return 'unshifted sentence', 'number'
+
+    def twenty_one(self, a, b):
         ps.display(21)
         """
         Add your code here.
         """
 
-    def twenty_two(self):
+        return
+
+    def twenty_two(self, two_dimensional_list):
         ps.display(22)
         """
         Add your code here.
         """
 
-    def twenty_three(self):
+        return
+
+    def twenty_three(self, two_dimensional_list):
         ps.display(23)
         """
         Add your code here.
         """
+        def recursive_spiral(): # what do you need to pass in here?
+            return
 
-    def twenty_four(self):
+        return recursive_spiral()
+
+    def twenty_four(self, sentence):
         ps.display(24)
         """
         Add your code here.
         """
 
-    def twenty_five(self):
+        return
+
+    def twenty_five(self, people_who_own_cars):
         ps.display(25)
         """
         Add your code here.
         """
+        # class Vehicle:
+        #    init code here
+        #    give_string function code here
 
-    def twenty_six(self):
+        set_up_class = []
+        class_results = []
+        # set_up_class.append(Vehicle("john", "Toyota", "Camry", 2020))
+        
+        # class_results.append(set_up_class[0].give_string())
+        
+        return class_results
+
+    def twenty_six(self, people_who_may_own_cars):
         ps.display(26)
         """
         Add your code here.
+        
+        (see code in twenty_five)
         """
+
+        return
 
     def twenty_seven(self):
         ps.display(27)
@@ -202,95 +294,227 @@ class Code_Problems:
         Add your code here.
         """
 
-    ping_pong = 0
+        return
+
+    
 
     def twenty_eight(self):
         ps.display(28)
         """
         Add your code here.
         """
+        
+
+        return False # return True when you believe you have the correct answer, (this is because global variables need to be tested differently)
 
     def twenty_nine(self):
         ps.display(29)
         """
         Add your code here.
         """
+        ping_or_pong = []
 
-    def fix_me_1(self, test_arg):
+        return ping_or_pong
+
+
+
+
+
+    def fix_me_1(self, list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
         ps.display("rest")
         """
-        Add your code here.
+        If we encounter a multiple of 8, double the next numbers until the next multiple of 8.
+        if we encounter an odd number, halve it. 
+        
+        1-line error here. find and fix it.
         """
-        return 
+        arr = list
+        
+        for i in range(len(arr)):
+            if arr[i] % 8 == 0:
+                for j in range(1, len(arr)):
+                    if arr[j] % 8 == 0:
+                        break
+                    arr[j] *= 2
+            elif arr[i] % 2 == 1:
+                arr[i] /= 2
+        
+        return arr
 
-    def fix_me_2(self):
+    def fix_me_2(list=[1, 3, 6, 5, 5]):
         ps.display("rest")
         """
-        Add your code here.
+        reverse a list then print the reversed list. use insert and pop to do this
+        
+        error is one line, find and fix it.
         """
+        arr = list
+        for i in arr:
+            arr.insert(i, arr.pop(-1))
+            
+        return arr
 
-    def fix_me_3(self):
+    def fix_me_3(self, left=[1, 3, 5], right=[2, 4, 6, 7, 8]):
         ps.display("rest")
         """
-        Add your code here.
+        combine two lists, interchanging which index to take. prioritize left side.
+        
+        3 errors here, find and fix them. (uncomment the code to start working)
         """
+        
+        combined = []
+        for i in range(100):
+            # combined.append(?) if i ?? len(left) else None
+            # combined.append(?) if i ?? len(right) else None
+            pass
+            
+        return combined
 
-    def fix_me_4(self):
+    def fix_me_4(self, number):
+        import random
         ps.display("rest")
         """
-        Add your code here.
+        simplify this code. it is supposed to return the same thing as it currently does, but it is very messy and has some unnecessary parts. find and remove the unnecessary parts, and simplify the code as much as possible.
         """
+        Regina_George = abs(int(number))
+        
+        misunderstanding = random.randint(1000, 9999)
+        
+        flippy_doo_dad = True
+        for _ in range(misunderstanding):
+            flippy_doo_dad = not flippy_doo_dad
+            
+        mean_girls_movie_reference = Regina_George + misunderstanding
+        
+        new_problem = flippy_doo_dad
+        
+        while (mean_girls_movie_reference > 0):
+            new_problem = bool(int(new_problem)^1)
+            mean_girls_movie_reference -= len(list("1"))
+            
+        return 1 if new_problem else 0
 
-    def fix_me_5(self):
+    def fix_me_5(self, keys=["a", "b", "c", "4"], values=[1, 2, 3, "d"]):
         ps.display("rest")
         """
-        Add your code here.
+        Given 2 lists, create a dictionary.
+        
+        FOR THIS ONE, hard code the 'error count' to how many errors you find!
         """
+        error_count = 9001
+        
+        new_dict = dict(zip(keys, values))
+        
+        return new_dict, error_count
 
-    def fix_me_6(self):
+    def fix_me_6(self, name="John Doe"):
         ps.display("rest")
         """
-        Add your code here.
+        given a string, output first_letter_of_lastname. firstname.
         """
+        firstname, lastname = name.split()    
+        introduction = f"{lastname}. {firstname}."
+    
+        return introduction
 
     def fix_me_7(self):
         ps.display("rest")
         """
-        Add your code here.
+        simplify this code.
+        this code should always return the string "final result".
         """
+        
+        def first_function():
+            def second_function():
+                def third_function():
+                    def fourth_function():
+                        def fifth_function():
+                            return "final result"
+                        return fifth_function()
+                    return fourth_function()
+                return third_function()
+            return second_function()            
+        return first_function()
+        
 
     def fix_me_8(self):
         ps.display("rest")
         """
-        Add your code here.
+        this does a thing, there is a single error tho. find and fix it.
         """
+        def recursive_function(n):
+            if n > 0:
+                return "base case reached"
+            else:
+                return recursive_function(n - 1)
 
-    def fix_me_9(self):
+        return recursive_function(100)
+
+    def fix_me_9(self, value=20):
+        pip = value
+
         ps.display("rest")
         """
-        Add your code here.
+        the yell function is missing something. it should return "AAAA" if pip is less than 5, and "OOOO" if pip is greater than or equal to 5. find and fix the error.
         """
+        def yell():
+            return "AAAA" if pip < 5 else "OOOO"
+        
+        return yell() #should be OOOO
 
-    def fix_me_10(self):
+    def fix_me_10(self, totally_a_number="teehee"):
         ps.display("rest")
         """
-        Add your code here.
+        this should have some error handling, return 'not a number' if the input is not a number, otherwise return the number (VALUE ERROR)
         """
+        
+        num = totally_a_number
+        num = int(num)     
+
+        return num
 
     def final_1(self):
         ps.display("final")
         """
-        Add your code here.
+        turn this for loop into a while loop.
         """
+        result1 = 0
+        for i in range(10, 100, 2):
+            result1 += i
+            print(f"result is currently: {result1}, while on number: {i}")
+        
+        result2 = 0
+        # while loop here
+
+        return True if result1 == result2 else False
 
     def final_2(self):
         ps.display("final")
         """
-        Add your code here.
+        Turn this iterative function into a recursive function! woooo!
         """
+        a = [2, 4, 6, 8, 10]
+        b = ["dos", "quatro", "seis", "ocho", "diez"]
+        
+
+        for i in range(len(a)):
+            print(f"{a[i]} is {b[i]} in spanish.")
+        
+        # recursive function here, you may need to pass in some parameters for this one!
+        def recursive_print(index):
+            if index < len(a):
+                print(f"{a[index]} is {b[index]} in spanish.")
+                recursive_print(index + 1)
+                
+        
+
+
+        return
 
     def final_3(self):
         ps.display("final")
         """
         Add your code here.
         """
+
+        return

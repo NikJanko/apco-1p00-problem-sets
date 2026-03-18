@@ -489,32 +489,51 @@ class Code_Problems:
         return True if result1 == result2 else False
 
     def final_2(self):
+        import random
+        random.seed(10)
+        arr = [x for x in random.sample(range(1, 100), 30)]
         ps.display("final")
         """
         Turn this iterative function into a recursive function! woooo!
         """
-        a = [2, 4, 6, 8, 10]
-        b = ["dos", "quatro", "seis", "ocho", "diez"]
         
-
-        for i in range(len(a)):
-            print(f"{a[i]} is {b[i]} in spanish.")
+        def iterative_binary_search(arr, target):
+            left, right = 0, len(arr) - 1
+            target = 50
+            
+            while left <= right:
+                mid = (left + right) // 2
+                if arr[mid] == target:
+                    result1 = mid
+                    break
+                elif arr[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
         
-        # recursive function here, you may need to pass in some parameters for this one!
-        def recursive_print(index):
-            if index < len(a):
-                print(f"{a[index]} is {b[index]} in spanish.")
-                recursive_print(index + 1)
-                
         
-
-
-        return
+        
+        def recursive_binary_search(arr, left, right, target):
+            # CONVERT ME TO RECURSIVE BINARY SEARCH
+            return
+        
+        return True if iterative_binary_search(arr, 50) == recursive_binary_search(arr, 0, len(arr) - 1, 50) else False
 
     def final_3(self):
         ps.display("final")
         """
-        Add your code here.
+        this list is a dictionary, convert it back into two lists.
         """
+        keys_list = ["Canada", "USA", "Mexico", "UK", "France", "Germany", "Italy", "Spain", "Portugal", "Netherlands"]
+        values_list = [6, 3, 6, 2, 6, 7, 5, 5, 8, 11]
+        
+        countries_dict = dict(zip(keys_list, values_list))
+        
+        # now convert the dict back into two list, one for keys, and the other for values.
+        
+        dict_keys_list = []
+        dict_values_list = []
+        
+        
 
-        return
+        return True if (True if keys_list == dict_keys_list else False) and (True if values_list == dict_values_list else False) else False

@@ -6,75 +6,50 @@ from helper_functions import hint as hint
 import io
 
 def see_only_output(func, *args, **kwargs):
-    """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
+    """Unused testing function"""
     old_stdout = sys.stdout
     sys.stdout = io.StringIO()
     result = func(*args, **kwargs)
     sys.stdout = old_stdout
-    """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
+    
     return result
+    """IGNORE THIS CODE SECTION, IT IS USED TO SET UP THE PROBLEMS FOR YOU."""
 
 
 if __name__ == "__main__":
+    # set up problems and hints.
     verify = VE.Verify_Environment()
     verify.verify_environment(dir_name=verify.dir_name, dir_name2=verify.dir_name2)
     problems = Problem.Code_Problems()
     hint = hint.Hint_Manager()
     
     """
-    Here is the main function that will run your code. You can change the problem number to run different problems.
-
-    You will only need to write the code in the code_problems.py file.
-    For hints, uncomment the hint line, 
-    to see only what is returned (without the problem statement), uncomment the see_only_output line and comment out the normal run_problem line.
-    if you messed up the file structure/files and nothing is working anymore, uncomment the fix_files line to reset the files to their original state (this will also reset the generated_files folder, so if you have files you want to keep, move them elsewhere before running this code).
+    WORKFLOW:
+    1. Uncomment a problem below to run it (problems 1-29 are regular, 30-39 are 'fix me', 40-42 are final) 
+        - the problem statement will print in the terminal, in which, you'll know what to do.
+    2. Write code in code_problems.py
+    3. Use hints with hint.ask_hint() if stuck (try before checking solutions folder) 
+        - This is open book, (but dont use AI).
+    4. When you complete all problems, go to the Test_Cases/test.py file and run it up! 
+        - a history will be stored in 'history.txt' 
+        - you'll be testing your solutions against mine.
+        
+    Questions are rated by difficulty, higher level the more involved or harder the problem is. Do not be sad or discouraged if you find a problem hard, just try your best and use the resources available to you. The goal is to learn!
     
-    To test your code, uncomment the full_sweep line.
-    
-    Choose which problem you want to do by first selecting it here, running it (to see the problem statement), and then writing your code in the code_problems.py file.
-
-    -------------------------------------------------------------------------------
-    
-    
-    Each problem (that is not a 'generate file' problem) SHOULD print AND return the answer. if the output is 'generated file' and something else, then you should just print the answer. If the output is only 'generated file', then you do not need to print or return anything. The files you generated should be in the 'generated_files' folder so that my code may check if you actually generated them, and test the contents of the files you generated. printing is only to help you, but you must return the output, and if you are still confused, you may email me: nj21mf@brocku.ca
-    
-    NOTE: do not use AI. you may use your notes, the hints provided and the internet (Documentation, StackOverflow, etc.) to help you with the problems, but do not use AI to generate code for you. Although this is not graded this problem set has been made for you to practice your coding, reading and creative skills. In the case that you are really stuck you may ask AI for help understanding OR clarification. But best not to use it for answers. My solutions (minimized and multiline) are in the solutions folder for you to check your work against, or to guide you. Try to exhaust the hints before defaulting to looking at solutions.
+    GUIDELINES:
+    - Problems should print AND return results (non-file problems)
+    - File-generation problems only need to create files in ../generated_files
+    - Don't use AI to generate code; use notes, hints, docs, StackOverflow, and solutions folder as reference
+    - For debugging: use verify.fix_files() to reset files/folders (will clear generated_files)
     """
-    # ------------------------------------------------------------------- #
-    """
-    If you require a hint, uncomment the line below and run the file.
-    ---
-    1-29 are the regular problems, 30-39 are the 'fix me' problems, and 40-42 are the final problems.
-    """
-    # hint.ask_hint()
-    
-    
-    # change the number to run different problems (1-29, fix_me_problems: 30-39, final_problems: 40-42)
+    # CHOOSE & RUN A PROBLEM :
     # problems.run_problem(1, 'arguments here if applicable')
     
-    
-    
-    
-    # ------------------------------------------------------------------- #
-    """
-    To fix the files and folders (this will delete the 'files' and 'generated_files' folders and re-create them, so if you have files in there you want to keep, move them elsewhere before running this code):
-
-    """
-    # verify.fix_files()
-    
-    
-    
-    # ------------------------------------------------ #
-    # ------------------------------------------------ #
-    # ------------------------------------------------ #
-    # ------------------------------------------------ #
-    """
-    in case you delete anything, these are the functions:
-    
+    # GET A HINT :
     # hint.ask_hint()
-    # problems.run_problem(1, 'arguments here if applicable')
+    
+    # RESET FILES/FOLDERS (WARNING: clears both folders) :
     # verify.fix_files()
-    """
     
     
 

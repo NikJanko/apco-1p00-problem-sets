@@ -5,7 +5,10 @@ import shutil
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-os.chdir(PROJECT_ROOT / "Test_Cases")
+PRACTICE_DIR = PROJECT_ROOT / "practice"
+
+# Change to practice directory so relative paths (../files, ./generated_files) work correctly
+os.chdir(PRACTICE_DIR)
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -16,6 +19,7 @@ from practice.code_problems import Code_Problems as PracticeProblems
 # Create temporary directories for solution and practice outputs
 SOLUTION_GEN_DIR = PROJECT_ROOT / "generated_files_solution"
 PRACTICE_GEN_DIR = PROJECT_ROOT / "generated_files_practice"
+TEMP_GEN_DIR = PRACTICE_DIR / "generated_files"
 
 os.makedirs(SOLUTION_GEN_DIR, exist_ok=True)
 os.makedirs(PRACTICE_GEN_DIR, exist_ok=True)
@@ -25,10 +29,8 @@ solution = SolutionProblems()
 practice = PracticeProblems()
 
 # Clean generated files directories at start
-temp_gen_dir = PROJECT_ROOT / "generated_files"
-if os.path.exists(temp_gen_dir):
-    shutil.rmtree(temp_gen_dir)
-os.makedirs(temp_gen_dir, exist_ok=True)
+if TEMP_GEN_DIR.exists():
+    shutil.rmtree(TEMP_GEN_DIR)
 shutil.rmtree(SOLUTION_GEN_DIR, ignore_errors=True)
 shutil.rmtree(PRACTICE_GEN_DIR, ignore_errors=True)
 os.makedirs(SOLUTION_GEN_DIR, exist_ok=True)

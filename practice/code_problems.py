@@ -3,7 +3,7 @@ import inspect
 
 ps = ProblemStatement()
 
-
+golden_ratio = 1.61803398875
 ping_pong = 10
 pip = 100
 
@@ -29,9 +29,9 @@ class Code_Problems:
                 
                 # Only pass arguments if method has parameters
                 if params:
-                    method(*sanitized_args, **kwargs)
+                    return method(*sanitized_args, **kwargs)
                 else:
-                    method()
+                    return method()
             else:
                 print("\033[91mProblem number not found. Please choose a valid problem number.\033[0m")
         except (TypeError, ValueError) as e:
@@ -172,6 +172,7 @@ class Code_Problems:
         ps.display(10)
         """
         Add your code here.
+        you may use the global variable 'golden_ratio' if you want.
         """
         def recurse_golden_ratio(phi, tolerance):
             return 

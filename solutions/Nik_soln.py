@@ -29,9 +29,9 @@ class Code_Problems:
                 
                 # Only pass arguments if method has parameters
                 if params:
-                    method(*sanitized_args, **kwargs)
+                    return method(*sanitized_args, **kwargs)
                 else:
-                    method()
+                    return method()
             else:
                 print("\033[91mProblem number not found. Please choose a valid problem number.\033[0m")
         except (TypeError, ValueError) as e:
@@ -157,7 +157,7 @@ class Code_Problems:
         
         with open('../files/grades.csv', 'r') as f:
             reader = csv.reader(f)
-            with open('../generated_files/grades_output.csv', 'w', newline='') as out:
+            with open('./generated_files//grades_output.csv', 'w', newline='') as out:
                 writer = csv.writer(out)
                 writer.writerow(['Last Name', 'First Name', 'Assignment 1', 'Assignment 2', 'Average'])
                 
@@ -177,7 +177,7 @@ class Code_Problems:
         """
         import csv
                 
-        with open('../generated_files/output.csv', 'w', newline='') as f:
+        with open('./generated_files//output.csv', 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(['Name', 'Assignment1', 'Assignment2'])
             # Input should be passed as parameter
@@ -208,7 +208,7 @@ class Code_Problems:
         
         random.seed(10)        
         numbers = random.sample(range(1, max_bound + 1), to_generate)
-        with open('../generated_files/recur.txt', 'w') as f:
+        with open('./generated_files//recur.txt', 'w') as f:
             for num in numbers:
                 f.write(str(num) + '\n')
         return numbers
@@ -228,14 +228,14 @@ class Code_Problems:
             
             recursive_sort(arr, n - 1, asc)
         
-        with open('../generated_files/recur.txt', 'r') as f:
+        with open('./generated_files//recur.txt', 'r') as f:
             arr = []
             for line in f:
                 arr.append(int(line.strip()))
         
         recursive_sort(arr, len(arr), asc=True)
         
-        with open('../generated_files/recur2.txt', 'w') as f:
+        with open('./generated_files//recur2.txt', 'w') as f:
             for num in arr:
                 f.write(str(num) + '\n')
         
@@ -258,7 +258,7 @@ class Code_Problems:
             else:
                 return recursive_binary_search(arr, left, mid - 1, target)
         
-        with open('../generated_files/recur2.txt', 'r') as f:
+        with open('./generated_files//recur2.txt', 'r') as f:
             arr = [int(line.strip()) for line in f]
         
         result = recursive_binary_search(arr, 0, len(arr) - 1, target)
@@ -328,7 +328,7 @@ class Code_Problems:
         import random
         
         random.seed(10)
-        with open('../generated_files/recur2.txt', 'w') as f:
+        with open('./generated_files//recur2.txt', 'w') as f:
             generated = set()
             for row in range(num_rows):
                 row_nums = []
@@ -347,14 +347,14 @@ class Code_Problems:
         Add your code here.
         """
                 
-        with open('../generated_files/recur2.txt', 'r') as f:
+        with open('./generated_files//recur2.txt', 'r') as f:
             rows = []
             for line in f:
                 parts = line.strip().split()
                 row = [int(p) for p in parts]
                 rows.append(sorted(row, reverse=not asc))
         
-        with open('../generated_files/recur3.txt', 'w') as f:
+        with open('./generated_files//recur3.txt', 'w') as f:
             for row in rows:
                 row_strs = [str(n) for n in row]
                 f.write(' '.join(row_strs) + '\n')
@@ -366,7 +366,7 @@ class Code_Problems:
         """
         Add your code here.
         """
-        with open('../generated_files/recur2.txt', 'r') as f:
+        with open('./generated_files//recur2.txt', 'r') as f:
             mode_dict = {}
             for line in f:
                 parts = line.strip().split()

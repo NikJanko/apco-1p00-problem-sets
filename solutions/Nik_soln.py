@@ -3,7 +3,7 @@ import inspect
 
 ps = ProblemStatement()
 
-
+golden_ratio = 1.61803398875
 ping_pong = 10
 pip = 100
 
@@ -131,6 +131,8 @@ class Code_Problems:
         ps.display(3)
         """
         Add your code here.
+        
+        this one is recursive
         """
         def factorial(n):
             if n <= 1:
@@ -168,7 +170,7 @@ class Code_Problems:
                     writer.writerow([lastname, firstname, grade1, grade2, avg])
         return result
 
-    def five(self):
+    def five(self, csv_additions: list=[['Jane', 0, 30],['Joe', 50, 40]]):
         ps.display(5)
         """
         Add your code here.
@@ -179,7 +181,8 @@ class Code_Problems:
             writer = csv.writer(f)
             writer.writerow(['Name', 'Assignment1', 'Assignment2'])
             # Input should be passed as parameter
-        
+            for row in csv_additions:
+                writer.writerow(row)
         return 0
 
     def six(self):
@@ -232,13 +235,13 @@ class Code_Problems:
         
         recursive_sort(arr, len(arr), asc=True)
         
-        with open('../generated_files/recur.txt', 'w') as f:
+        with open('../generated_files/recur2.txt', 'w') as f:
             for num in arr:
                 f.write(str(num) + '\n')
         
         return arr
 
-    def nine(self):
+    def nine(self, target: int=10):
         ps.display(9)
         """
         Add your code here.
@@ -255,10 +258,9 @@ class Code_Problems:
             else:
                 return recursive_binary_search(arr, left, mid - 1, target)
         
-        with open('../generated_files/recur.txt', 'r') as f:
-            arr = sorted([int(line.strip()) for line in f])
+        with open('../generated_files/recur2.txt', 'r') as f:
+            arr = [int(line.strip()) for line in f]
         
-        target = 10
         result = recursive_binary_search(arr, 0, len(arr) - 1, target)
         return result
 
@@ -279,6 +281,7 @@ class Code_Problems:
         ps.display(11)
         """
         Add your code here.
+        optionally call global golden_ratio
         """
         def recursive_fibonacci(n):
             if n <= 1:
@@ -373,9 +376,7 @@ class Code_Problems:
         
         return mode_dict
 
-    def seventeen(self, stories: int=1, dimensions: list=None, triangle_height: int=0):
-        if dimensions is None:
-            dimensions = []
+    def seventeen(self, stories: int=1, dimensions: list=[], triangle_height: int=0):
         ps.display(17)
         """
         Add your code here.
@@ -425,7 +426,7 @@ class Code_Problems:
         decoded = ''.join(decode_map.get(c, c) for c in encoded)
         return decoded
 
-    def nineteen(self):
+    def nineteen(self, input: str="possiblyFilePath"):
         ps.display(19)
         """
         Add your code here.
@@ -440,22 +441,53 @@ class Code_Problems:
             'Y': 'N',    'Z': 'M',    ' ': '-',    '-': ' '
         }
         
+        # Check if input is a file path
+        import os
+        if os.path.isfile(input):
+            with open(input, 'r') as f:
+                input = f.read()
+        
         # Encode using cipher map
-        encoded = ''.join(cipher_map.get(c.upper(), c) for c in 'Hello World')
+        encoded = ''.join(cipher_map.get(c.upper(), c) for c in input)
         return encoded
         
-    def twenty(self, sentence: str, clear_text_word: str):
+    def twenty(self, sentence: str="llohe rld!wo tsle deco", clear_text_word: str="lets"):
         ps.display(20)
         """
         Add your code here.
         """
-        # Shift characters to find valid sentence
-        for shift in range(1, 26):
-            shifted = ''.join(chr((ord(c) - ord('a') - shift) % 26 + ord('a')) if c.isalpha() else c for c in sentence.lower())
-            if clear_text_word.lower() in shifted:
-                return shifted, shift
+        words = sentence.split()
+        magic_shift = None
         
-        return sentence, 0
+        # Find the rotation number when a word matches clear_text_word
+        for word in words:
+            for shift in range(len(word)):
+                if shift == 0:
+                    rotated = word
+                else:
+                    rotated = word[-shift:] + word[:-shift]
+                
+                if rotated.lower() == clear_text_word.lower():
+                    magic_shift = shift
+                    break
+            if magic_shift is not None:
+                break
+        
+        # If no magic shift found, return original
+        if magic_shift is None:
+            return sentence, 0
+        
+        # Apply that shift to all words
+        descrambled_words = []
+        for word in words:
+            if magic_shift == 0:
+                rotated = word
+            else:
+                rotated = word[-magic_shift:] + word[:-magic_shift]
+            descrambled_words.append(rotated)
+        
+        descrambled_sentence = ' '.join(descrambled_words)
+        return descrambled_sentence, magic_shift
 
     def twenty_one(self, a: int, b: int):
         ps.display(21)
@@ -467,9 +499,7 @@ class Code_Problems:
             result += a
         return result
 
-    def twenty_two(self, two_dimensional_list: list=None):
-        if two_dimensional_list is None:
-            two_dimensional_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    def twenty_two(self, two_dimensional_list: list= [[1, 2, 3], [4, 5, 6], [7, 8, 9]]):
         ps.display(22)
         """
         Add your code here.
@@ -505,9 +535,7 @@ class Code_Problems:
         
         return result
 
-    def twenty_three(self, two_dimensional_list: list=None):
-        if two_dimensional_list is None:
-            two_dimensional_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    def twenty_three(self, two_dimensional_list: list= [[1, 2, 3], [4, 5, 6], [7, 8, 9]]):
         ps.display(23)
         """
         Add your code here.
@@ -560,9 +588,7 @@ class Code_Problems:
         
         return result_string, vowel_count
 
-    def twenty_five(self, people_who_own_cars: list=None):
-        if people_who_own_cars is None:
-            people_who_own_cars = [["jimmy", "honda", "civic", 2010, "red"]]
+    def twenty_five(self, people_who_own_cars: list= [["jimmy", "honda", "civic", 2010, "red"]]):
         ps.display(25)
         """
         Add your code here.
@@ -588,9 +614,7 @@ class Code_Problems:
         
         return class_results
 
-    def twenty_six(self, people_who_may_own_cars: list=None):
-        if people_who_may_own_cars is None:
-            people_who_may_own_cars = [["jimmy", "honda", "civic", 2010, "red"]]
+    def twenty_six(self, people_who_may_own_cars: list=[["jimmy", "honda", "civic", '2010x', "red"]]):
         ps.display(26)
         """
         Add your code here.
@@ -622,7 +646,7 @@ class Code_Problems:
             except ValueError as e:
                 class_results.append(f"Error: {e}")
             except:
-                class_results.append("Error: Invalid input")
+                class_results.append(f"Error: {e}")
         
         return class_results
 
@@ -648,15 +672,12 @@ class Code_Problems:
 
     
 
-    def twenty_eight(self):
+    def twenty_eight(self, game = [1, 2, 3, 2, 1]):
         ps.display(28)
         """
         Add your code here.
         """
         global ping_pong
-        ping_pong = 0
-        
-        numbers = [1, 2, 3, 2, 1]
         
         def increment():
             global ping_pong
@@ -667,10 +688,10 @@ class Code_Problems:
             ping_pong -= 1
         
         increment()
-        for i in range(1, len(numbers)):
-            if numbers[i] > numbers[i - 1]:
+        for i in range(1, len(game)):
+            if game[i] > game[i - 1]:
                 increment()
-            elif numbers[i] < numbers[i - 1]:
+            elif game[i] < game[i - 1]:
                 decrement()
         
         return ping_pong
@@ -681,36 +702,24 @@ class Code_Problems:
         Add your code here.
         """
         global ping_pong
-        ping_pong = 0
+        ping_pong = 0  # Reset counter is determined here
         
+        out = []
         with open('../files/data_quad.txt', 'r') as f:
             for line in f:
                 parts = line.strip().split()
                 nums = [int(p) for p in parts]
-                
-                # Call twenty_eight logic inline
-                def increment():
-                    global ping_pong
-                    ping_pong += 1
-                
-                def decrement():
-                    global ping_pong
-                    ping_pong -= 1
-                
-                increment()
-                for i in range(1, len(nums)):
-                    if nums[i] > nums[i - 1]:
-                        increment()
-                    elif nums[i] < nums[i - 1]:
-                        decrement()
+                # Call twenty_eight for each line
+                self.twenty_eight(nums)
         
-        if ping_pong > 0:
-            return 'ping'
-        elif ping_pong < 0:
-            return 'pong'
-        else:
-            return 'ping pong'
-
+                if ping_pong > 0:
+                    out.append('ping')
+                elif ping_pong < 0:
+                    out.append('pong')
+                else:
+                    out.append('ping pong')
+        return out
+    
 
 
 
@@ -754,15 +763,15 @@ class Code_Problems:
         """
         combine two lists, interchanging which index to take. prioritize left side.
         
-        3 errors here, find and fix them. (uncomment the code to start working)
+        4 errors here, find and fix them. (uncomment the code to start working)
         """
         
         combined = []
-        for i in range(max(len(left), len(right))):
-            if i < len(left):
-                combined.append(left[i])
-            if i < len(right):
-                combined.append(right[i])
+        for i in range(max(len(left), len(right))): #fixed too big of a range issue
+            if i < len(left):               # Fixed conditional statement logic
+                combined.append(left[i])    # Fixed missing append logic
+            if i < len(right):              # Fixed conditional statement logic
+                combined.append(right[i])   # Fixed missing append logic
             
         return combined
 
@@ -782,7 +791,7 @@ class Code_Problems:
         
         FOR THIS ONE, hard code the 'error count' to how many errors you find!
         """
-        error_count = 2
+        error_count = 0 # no errors here
         
         new_dict = dict(zip(keys, values))
         
@@ -794,7 +803,7 @@ class Code_Problems:
         given a string, output first_letter_of_lastname. firstname.
         """
         firstname, lastname = name.split()    
-        introduction = f"{lastname[0]}. {firstname}."
+        introduction = f"{lastname[0]}. {firstname}." #here
     
         return introduction
 
@@ -805,7 +814,7 @@ class Code_Problems:
         this code should always return the string "final result".
         """
         
-        return "final result"
+        return "final result" # we do not need all those functions
         
 
     def fix_me_8(self):
@@ -815,7 +824,7 @@ class Code_Problems:
         """
         def recursive_function(n):
             if n <= 0:  # Fixed: base case should be n <= 0, not n > 0
-                return "base case reached"
+                return n
             else:
                 return recursive_function(n - 1)
 
@@ -830,7 +839,7 @@ class Code_Problems:
         the yell function is missing something. it should return "AAAA" if pip is less than 5, and "OOOO" if pip is greater than or equal to 5. find and fix the error.
         """
         def yell():
-            global pip
+            global pip #call global var pip
             return "AAAA" if pip < 5 else "OOOO"
         
         return yell() #should be OOOO
@@ -841,7 +850,7 @@ class Code_Problems:
         this should have some error handling, return 'not a number' if the input is not a number, otherwise return the number (VALUE ERROR)
         """
         
-        try:
+        try: #error handling for value error
             num = int(totally_a_number)
             return num
         except ValueError:
@@ -919,7 +928,5 @@ class Code_Problems:
         
         dict_keys_list = list(countries_dict.keys())
         dict_values_list = list(countries_dict.values())
-        
-        
 
         return True if (True if keys_list == dict_keys_list else False) and (True if values_list == dict_values_list else False) else False

@@ -128,7 +128,7 @@ class Code_Problems:
         Add your code here.
         """
 
-    def five(self):
+    def five(self, csv_additions: list=[['Jane', 0, 30],['Joe', 50, 40]]):
         ps.display(5)
         """
         Add your code here.
@@ -160,7 +160,7 @@ class Code_Problems:
 
         return
 
-    def nine(self):
+    def nine(self, target: int=10):
         ps.display(9)
         """
         Add your code here.
@@ -260,7 +260,7 @@ class Code_Problems:
 
         return
 
-    def nineteen(self):
+    def nineteen(self, input: str="possiblyFilePath"):
         ps.display(19)
         """
         Add your code here.
@@ -278,7 +278,7 @@ class Code_Problems:
 
         return
         
-    def twenty(self, sentence: str, clear_text_word: str):
+    def twenty(self, sentence: str="llohe rld!wo tsle deco", clear_text_word: str="lets"):
         ps.display(20)
         """
         Add your code here.
@@ -355,9 +355,7 @@ class Code_Problems:
 
         return
 
-    
-
-    def twenty_eight(self):
+    def twenty_eight(self, game = [1, 2, 3, 2, 1]):
         ps.display(28)
         """
         Add your code here.
@@ -418,13 +416,15 @@ class Code_Problems:
         """
         combine two lists, interchanging which index to take. prioritize left side.
         
-        3 errors here, find and fix them. (uncomment the code to start working)
+        4 errors here, find and fix them. (uncomment the code to start working)
         """
         
         combined = []
         for i in range(100):
-            # combined.append(?) if i ?? len(left) else None
-            # combined.append(?) if i ?? len(right) else None
+            # if i ? ?:
+            #     combined.append(?))
+            # if i ? ?:
+            #     combined.append(?)
             pass
             
         return combined
@@ -470,6 +470,7 @@ class Code_Problems:
         ps.display("rest")
         """
         given a string, output first_letter_of_lastname. firstname.
+        there is one error
         """
         firstname, lastname = name.split()    
         introduction = f"{lastname}. {firstname}."
@@ -503,13 +504,14 @@ class Code_Problems:
         """
         def recursive_function(n):
             if n > 0:
-                return "base case reached"
+                return n
             else:
                 return recursive_function(n - 1)
 
         return recursive_function(100)
 
     def fix_me_9(self, value: int=20):
+        global pip
         pip = value
 
         ps.display("rest")
@@ -553,7 +555,7 @@ class Code_Problems:
         arr = [x for x in random.sample(range(1, 100), 30)]
         ps.display("final")
         """
-        Turn this iterative function into a recursive function! woooo!
+        Turn this iterative function into a recursive function! woooo! (return -1 if not found.)
         """
         
         def iterative_binary_search(arr, target):
@@ -563,14 +565,12 @@ class Code_Problems:
             while left <= right:
                 mid = (left + right) // 2
                 if arr[mid] == target:
-                    result1 = mid
-                    break
+                    return mid
                 elif arr[mid] < target:
                     left = mid + 1
                 else:
                     right = mid - 1
-        
-        
+            return -1        
         
         def recursive_binary_search(arr, left, right, target):
             # CONVERT ME TO RECURSIVE BINARY SEARCH

@@ -4,15 +4,18 @@ import filecmp
 import shutil
 from pathlib import Path
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+os.chdir(PROJECT_ROOT / "Test_Cases")
+
 # Add parent directory to path for imports
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from solutions.Nik_soln import Code_Problems as SolutionProblems
 from practice.code_problems import Code_Problems as PracticeProblems
 
 # Create temporary directories for solution and practice outputs
-SOLUTION_GEN_DIR = "./generated_files_solution"
-PRACTICE_GEN_DIR = "./generated_files_practice"
+SOLUTION_GEN_DIR = PROJECT_ROOT / "generated_files_solution"
+PRACTICE_GEN_DIR = PROJECT_ROOT / "generated_files_practice"
 
 os.makedirs(SOLUTION_GEN_DIR, exist_ok=True)
 os.makedirs(PRACTICE_GEN_DIR, exist_ok=True)
@@ -22,7 +25,7 @@ solution = SolutionProblems()
 practice = PracticeProblems()
 
 # Clean generated files directories at start
-temp_gen_dir = "./generated_files"
+temp_gen_dir = PROJECT_ROOT / "generated_files"
 if os.path.exists(temp_gen_dir):
     shutil.rmtree(temp_gen_dir)
 os.makedirs(temp_gen_dir, exist_ok=True)
@@ -56,8 +59,8 @@ def compare_results(problem_num, solution_result, practice_result):
 
 def compare_files(problem_num, filename):
     """Dynamically compare generated files if they exist"""
-    solution_file = f"{SOLUTION_GEN_DIR}/{filename}"
-    practice_file = f"{PRACTICE_GEN_DIR}/{filename}"
+    solution_file = SOLUTION_GEN_DIR / filename
+    practice_file = PRACTICE_GEN_DIR / filename
     
     try:
         solution_exists = os.path.exists(solution_file)
@@ -206,7 +209,7 @@ for config in test_configs:
     
     try:
         # Get the current state of generated_files before running
-        temp_gen_dir = "./generated_files"
+        temp_gen_dir = PROJECT_ROOT / "generated_files"
         os.makedirs(temp_gen_dir, exist_ok=True)
         
         # Get pre-solution state
@@ -228,7 +231,7 @@ for config in test_configs:
                 if os.path.isfile(file_path):
                     # Check if file is new or modified
                     if file not in pre_solution_state or os.path.getmtime(file_path) > pre_solution_state[file]:
-                        dst = os.path.join(SOLUTION_GEN_DIR, file)
+                        dst = SOLUTION_GEN_DIR / file
                         shutil.copy2(file_path, dst)
         
         # Get post-solution state for practice
@@ -250,7 +253,7 @@ for config in test_configs:
                 if os.path.isfile(file_path):
                     # Check if file is new or modified during practice run
                     if file not in pre_practice_state or os.path.getmtime(file_path) > pre_practice_state[file]:
-                        dst = os.path.join(PRACTICE_GEN_DIR, file)
+                        dst = PRACTICE_GEN_DIR / file
                         shutil.copy2(file_path, dst)
         
         # Compare results
@@ -312,10 +315,11 @@ for line in summary_lines:
     print(line)
 
 # Append to history.txt
-if not os.path.exists("./history.txt"):
-    with open("history.txt", 'w') as f:
+history_path = PROJECT_ROOT / "history.txt"
+if not history_path.exists():
+    with open(history_path, 'w') as f:
         pass
     
-with open('history.txt', 'a') as f:
+with open(history_path, 'a') as f:
     for line in summary_lines:
         f.write(line + '\n')

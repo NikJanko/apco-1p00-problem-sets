@@ -1,0 +1,39 @@
+================================================================================
+[PASS] Passed: 3/81
+[FAIL] Failed: 69/81
+[ERROR] Errors: 9/81
+
+Failed problems: [5, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 28, 30, 31, 32, 34, 35, 37, 39, 40, 41, 42]
+
+Problems with errors: [1, 2, 3, 4, 6, 13, 18, 27, 29]
+
+================================================================================
+FAILURE DETAILS (first 5 failures):
+================================================================================
+
+[FAIL] Problem 5: Type mismatch
+  Solution type: int = 0
+  Practice type: NoneType = None
+  Args: ()
+
+[FAIL] Problem 7: Type mismatch
+  Solution type: list = [37, 3, 28, 31, 50, 1, 14, 30, 32, 18]
+  Practice type: NoneType = None
+  Args: (10, 50)
+
+[FAIL] Problem 7: Type mismatch
+  Solution type: list = [19, 2, 14, 16, 1]
+  Practice type: NoneType = None
+  Args: (5, 20)
+
+[FAIL] Problem 7: Type mismatch
+  Solution type: list = [74, 5, 55, 62, 2, 27, 60, 63, 36, 84, 21, 67, 42, 10, 32]
+  Practice type: NoneType = None
+  Args: (15, 100)
+
+[FAIL] Problem 7: Type mismatch
+  Solution type: list = [10, 1, 7, 4, 5, 9, 2, 8]
+  Practice type: NoneType = None
+  Args: (8, 10)
+
+================================================================================

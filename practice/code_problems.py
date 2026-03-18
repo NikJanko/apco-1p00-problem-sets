@@ -1,4 +1,6 @@
 from helper_functions import ProblemStatement
+import inspect
+
 ps = ProblemStatement()
 
 
@@ -16,23 +18,79 @@ class Code_Problems:
         }
         
     def run_problem(self, problem_number, *args, **kwargs):
-        if problem_number in self.question:
-            sanitized_args = self._sanitize_args(args, problem_number)
-            # self.problem_dict[problem_number](sanitized_args, **kwargs)
-            self.question[problem_number]()
-        else:
-            print("Problem number not found. Please choose a valid problem number.")
+        try:
+            if problem_number in self.question:
+                method = self.question[problem_number]
+                sanitized_args = self._sanitize_args(args, method)
+                
+                # Check if method accepts parameters beyond self
+                sig = inspect.signature(method)
+                params = [p for p in sig.parameters.values() if p.name != 'self']
+                
+                # Only pass arguments if method has parameters
+                if params:
+                    method(*sanitized_args, **kwargs)
+                else:
+                    method()
+            else:
+                print("\033[91mProblem number not found. Please choose a valid problem number.\033[0m")
+        except (TypeError, ValueError) as e:
+            print(f"\033[91mError: {e}. Please check the arguments you provided for problem {problem_number}.\033[0m")
     
-    def _sanitize_args(self, args, problem_number):
-        """Sanitize and validate input arguments."""
-        # if problem_number == 1:
-        #     if isinstance(args[0], str):
-        #         args[0] = args[0].strip()
-
-        # if not args:
-        #     return None
-
-        return args
+    def _sanitize_args(self, args, method):
+        """Sanitize and convert input arguments to match method parameter types."""
+        if not args:
+            return args
+        
+        sig = inspect.signature(method)
+        params = [p for p in sig.parameters.values() if p.name != 'self']
+        
+        sanitized = []
+        for i, arg in enumerate(args):
+            if i >= len(params):
+                # Extra arguments beyond parameters
+                sanitized.append(arg)
+                continue
+            
+            param = params[i]
+            annotation = param.annotation
+            
+            # If no annotation, return as-is
+            if annotation == inspect.Parameter.empty:
+                sanitized.append(arg)
+                continue
+            
+            # Convert to the expected type
+            try:
+                if annotation == int:
+                    sanitized.append(int(arg))
+                elif annotation == float:
+                    sanitized.append(float(arg))
+                elif annotation == str:
+                    sanitized.append(str(arg))
+                elif annotation == bool:
+                    # Handle bool conversion sensibly
+                    if isinstance(arg, str):
+                        sanitized.append(arg.lower() in ['true', '1', 'yes', 'y'])
+                    else:
+                        sanitized.append(bool(arg))
+                elif annotation == list:
+                    if isinstance(arg, list):
+                        sanitized.append(arg)
+                    else:
+                        sanitized.append([arg])
+                elif annotation == dict:
+                    if isinstance(arg, dict):
+                        sanitized.append(arg)
+                    else:
+                        sanitized.append({})
+                else:
+                    # For other types, try to convert directly
+                    sanitized.append(annotation(arg))
+            except (ValueError, TypeError) as e:
+                raise ValueError(f"\033[91mCannot convert argument '{arg}' to type {annotation.__name__}: {e}\033[0m")
+        
+        return tuple(sanitized)
         
         
     """
@@ -86,7 +144,7 @@ class Code_Problems:
 
         return
 
-    def seven(self, to_generate, max_bound):
+    def seven(self, to_generate: int, max_bound: int):
         ps.display(7)
         """
         Add your code here.
@@ -110,7 +168,7 @@ class Code_Problems:
 
         return
 
-    def ten(self, phi, tolerance):
+    def ten(self, phi: float, tolerance: float):
         ps.display(10)
         """
         Add your code here.
@@ -121,7 +179,7 @@ class Code_Problems:
 
         return recurse_golden_ratio(phi, tolerance)
 
-    def eleven(self, nth_fib_digit):
+    def eleven(self, nth_fib_digit: int):
         ps.display(11)
         """
         Add your code here.
@@ -132,7 +190,8 @@ class Code_Problems:
 
         return recursive_fibonacci(nth_fib_digit)
 
-    def twelve(self, nth_fib_digit):
+
+    def twelve(self, nth_fib_digit: int):
         ps.display(12)
         """
         Add your code here.
@@ -149,7 +208,7 @@ class Code_Problems:
         return
 
 
-    def fourteen(self, num_rows):
+    def fourteen(self, num_rows: int):
         ps.display(14)
         """
         Add your code here.
@@ -157,7 +216,7 @@ class Code_Problems:
 
         return False #return True when you believe you have the correct output.
 
-    def fifteen(self, asc=True):
+    def fifteen(self, asc: bool=True):
         ps.display(15)
         """
         Add your code here.
@@ -173,7 +232,7 @@ class Code_Problems:
 
         return
 
-    def seventeen(self, stories=1, dimensions=[], triangle_height=0):
+    def seventeen(self, stories: int=1, dimensions: list=[], triangle_height: int=0):
         ps.display(17)
         """
         Add your code here.
@@ -219,7 +278,7 @@ class Code_Problems:
 
         return
         
-    def twenty(self, sentence, clear_text_word):
+    def twenty(self, sentence: str, clear_text_word: str):
         ps.display(20)
         """
         Add your code here.
@@ -227,7 +286,7 @@ class Code_Problems:
 
         return 'unshifted sentence', 'number'
 
-    def twenty_one(self, a, b):
+    def twenty_one(self, a: int, b: int):
         ps.display(21)
         """
         Add your code here.
@@ -235,7 +294,7 @@ class Code_Problems:
 
         return
 
-    def twenty_two(self, two_dimensional_list):
+    def twenty_two(self, two_dimensional_list: list=[[1, 2, 3], [4, 5, 6], [7, 8, 9]]):
         ps.display(22)
         """
         Add your code here.
@@ -243,7 +302,7 @@ class Code_Problems:
 
         return
 
-    def twenty_three(self, two_dimensional_list):
+    def twenty_three(self, two_dimensional_list: list=[[1, 2, 3], [4, 5, 6], [7, 8, 9]]):
         ps.display(23)
         """
         Add your code here.
@@ -253,7 +312,7 @@ class Code_Problems:
 
         return recursive_spiral()
 
-    def twenty_four(self, sentence):
+    def twenty_four(self, sentence: str):
         ps.display(24)
         """
         Add your code here.
@@ -261,7 +320,7 @@ class Code_Problems:
 
         return
 
-    def twenty_five(self, people_who_own_cars):
+    def twenty_five(self, people_who_own_cars: list=[["jimmy", "honda", "civic", 2010, "red"]]):
         ps.display(25)
         """
         Add your code here.
@@ -278,7 +337,7 @@ class Code_Problems:
         
         return class_results
 
-    def twenty_six(self, people_who_may_own_cars):
+    def twenty_six(self, people_who_may_own_cars: list=[["jimmy", "honda", "civic", '2010x', "red"]]):
         ps.display(26)
         """
         Add your code here.
@@ -312,15 +371,15 @@ class Code_Problems:
         """
         Add your code here.
         """
-        ping_or_pong = []
+        ping_or_pong_list = []
 
-        return ping_or_pong
-
-
+        return ping_or_pong_list
 
 
 
-    def fix_me_1(self, list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
+
+
+    def fix_me_1(self, list: list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
         ps.display("rest")
         """
         If we encounter a multiple of 8, double the next numbers until the next multiple of 8.
@@ -341,7 +400,7 @@ class Code_Problems:
         
         return arr
 
-    def fix_me_2(list=[1, 3, 6, 5, 5]):
+    def fix_me_2(list: list=[1, 3, 6, 5, 5]):
         ps.display("rest")
         """
         reverse a list then print the reversed list. use insert and pop to do this
@@ -354,7 +413,7 @@ class Code_Problems:
             
         return arr
 
-    def fix_me_3(self, left=[1, 3, 5], right=[2, 4, 6, 7, 8]):
+    def fix_me_3(self, left: list=[1, 3, 5], right: list=[2, 4, 6, 7, 8]):
         ps.display("rest")
         """
         combine two lists, interchanging which index to take. prioritize left side.
@@ -370,7 +429,7 @@ class Code_Problems:
             
         return combined
 
-    def fix_me_4(self, number):
+    def fix_me_4(self, number: int):
         import random
         ps.display("rest")
         """
@@ -394,7 +453,7 @@ class Code_Problems:
             
         return 1 if new_problem else 0
 
-    def fix_me_5(self, keys=["a", "b", "c", "4"], values=[1, 2, 3, "d"]):
+    def fix_me_5(self, keys: list=["a", "b", "c", 4], values: list=[1, 2, 3, "d"]):
         ps.display("rest")
         """
         Given 2 lists, create a dictionary.
@@ -407,7 +466,7 @@ class Code_Problems:
         
         return new_dict, error_count
 
-    def fix_me_6(self, name="John Doe"):
+    def fix_me_6(self, name: str="John Doe"):
         ps.display("rest")
         """
         given a string, output first_letter_of_lastname. firstname.
@@ -450,7 +509,7 @@ class Code_Problems:
 
         return recursive_function(100)
 
-    def fix_me_9(self, value=20):
+    def fix_me_9(self, value: int=20):
         pip = value
 
         ps.display("rest")
@@ -462,7 +521,7 @@ class Code_Problems:
         
         return yell() #should be OOOO
 
-    def fix_me_10(self, totally_a_number="teehee"):
+    def fix_me_10(self, totally_a_number: str="teehee"):
         ps.display("rest")
         """
         this should have some error handling, return 'not a number' if the input is not a number, otherwise return the number (VALUE ERROR)

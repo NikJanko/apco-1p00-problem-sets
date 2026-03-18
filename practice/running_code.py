@@ -40,25 +40,22 @@ if __name__ == "__main__":
     
     NOTE: do not use AI. you may use your notes, the hints provided and the internet (Documentation, StackOverflow, etc.) to help you with the problems, but do not use AI to generate code for you. Although this is not graded this problem set has been made for you to practice your coding, reading and creative skills. In the case that you are really stuck you may ask AI for help understanding OR clarification. But best not to use it for answers. My solutions (minimized and multiline) are in the solutions folder for you to check your work against, or to guide you. Try to exhaust the hints before defaulting to looking at solutions.
     """
-    
     # ------------------------------------------------------------------- #
-    # ------------------------------------------------------------------- #
-    """If you require a hint, uncomment the line below and run the file."""
+    """
+    If you require a hint, uncomment the line below and run the file.
+    ---
+    1-29 are the regular problems, 30-39 are the 'fix me' problems, and 40-42 are the final problems.
+    """
     # hint.ask_hint()
     
-    # ------------------------------------------------------------------- #
-    # ------------------------------------------------------------------- #
     
     # change the number to run different problems (1-29, fix_me_problems: 30-39, final_problems: 40-42)
-    # problems.run_problem(1)
+    # problems.run_problem(1, 'arguments here if applicable')
     
     
-    """
-    to see only the returned value (what your code is being tested on), uncomment the line below and comment out the normal run_problem line above.
-    """
-    print(see_only_output(problems.question[38], 1)) 
     
     
+    # ------------------------------------------------------------------- #
     """
     To fix the files and folders (this will delete the 'files' and 'generated_files' folders and re-create them, so if you have files in there you want to keep, move them elsewhere before running this code):
 
@@ -68,11 +65,14 @@ if __name__ == "__main__":
     
     
     # ------------------------------------------------ #
+    # ------------------------------------------------ #
+    # ------------------------------------------------ #
+    # ------------------------------------------------ #
     """
     in case you delete anything, these are the functions:
     
     # hint.ask_hint()
-    # print(see_only_output(problems.question[41], 'arguments here')) 
+    # problems.run_problem(1, 'arguments here if applicable')
     # verify.fix_files()
     """
     

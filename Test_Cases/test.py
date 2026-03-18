@@ -4,11 +4,19 @@ import filecmp
 import shutil
 from pathlib import Path
 
+# Ensure we run from the Test_Cases directory so relative paths work correctly
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from solutions.Nik_soln import Code_Problems as SolutionProblems
 from practice.code_problems import Code_Problems as PracticeProblems
+from helper_functions.run_me_first import Run_Me_First
+
+# Ensure the data files directory and generated_files directory exist before running tests
+_setup = Run_Me_First()
+_setup.create_files(dir_name='../files', dir_name2='./generated_files')
 
 # Create temporary directories for solution and practice outputs
 SOLUTION_GEN_DIR = "./generated_files_solution"

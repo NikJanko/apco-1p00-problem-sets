@@ -1,5 +1,6 @@
 import sys
-sys.path.insert(0, __file__.rsplit('\\', 1)[0].rsplit('\\', 1)[0])
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import code_problems as Problem
 from helper_functions import verify_environment as VE
 from helper_functions import hint as hint

@@ -162,9 +162,10 @@ class Code_Problems:
                 writer.writerow(['Last Name', 'First Name', 'Assignment 1', 'Assignment 2', 'Average'])
                 
                 for row in reader:
-                    lastname, firstname = row[0].split(', ')
-                    grade1 = int(row[1])
-                    grade2 = int(row[2])
+                    lastname = row[0].strip()
+                    firstname = row[1].strip()
+                    grade1 = int(row[2].strip())
+                    grade2 = int(row[3].strip())
                     avg = (grade1 + grade2) / 2
                     result.append(f"{firstname} {lastname}: {avg}")
                     writer.writerow([lastname, firstname, grade1, grade2, avg])
@@ -645,7 +646,7 @@ class Code_Problems:
                 class_results.append(vehicle.give_string())
             except ValueError as e:
                 class_results.append(f"Error: {e}")
-            except:
+            except Exception as e:
                 class_results.append(f"Error: {e}")
         
         return class_results

@@ -1,2 +1,8 @@
 *.pdf
 __pycache__/
+Test_Cases/generated_files/
+Test_Cases/generated_files_solution/
+Test_Cases/generated_files_practice/
+Test_Cases/history.txt
+files/
+generated_files/

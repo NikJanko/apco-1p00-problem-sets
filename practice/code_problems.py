@@ -15,6 +15,11 @@ ping_pong = 10
 pip = 100
 
 
+"""
+Start coding at the very bottom "if __name__ == "__main__":" section.
+"""
+
+
 class Code_Problems:
     def __init__(self):
         self.question = {

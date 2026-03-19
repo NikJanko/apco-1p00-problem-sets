@@ -53,20 +53,21 @@ class Hint_Manager:
         
         if problem_number in self.hint_dict:
             if problem_number in ["rest", "final"]:
-                print("\033[96m"+f"Problem {problem_number} only has 1 hint level, and it is:\n{self.hint_dict[problem_number][0]}"+ "\033[0m")
+                problem_number = "final"
+                print("\033[36m"+f"{problem_number} problems only has 1 hint level, and it is:\n{self.hint_dict[problem_number][0]}"+ "\033[0m")
                 return
             
             if 1 <= hint_level <= len(self.hint_dict[problem_number]):
                 print(self.hint_dict[problem_number][hint_level - 1])
             else:
-                print(f"\033[91mInvalid hint level. Please choose a hint level between 1 and {len(self.hint_dict[problem_number])} for problem {problem_number}.\033[0m")
+                print(f"\033[31mInvalid hint level. Please choose a hint level between 1 and {len(self.hint_dict[problem_number])} for problem {problem_number}.\033[0m")
         else:
-            print("\033[91mInvalid problem number. Please choose a valid hint + hint level.\033[0m")
+            print("\033[31mInvalid problem number. Please choose a valid hint + hint level.\033[0m")
 
 
 
     def ask_hint(self):
-        print("\033[96m"+
+        print("\033[36m"+
             "Problems 1-29 have 3 hints, 30-40 have 2 hints, and 41-43 have 1 hint.\n Question [4, 8, 16, 17, 19, 20, 22, 28] all have 4 hint levels."+
             "\033[0m")
         
@@ -75,10 +76,10 @@ class Hint_Manager:
         try:
             hint, level = user_input.strip().split()
         except ValueError:
-            print("\033[91mInvalid input format. Please enter the problem number and hint level separated by a space.\033[0m")
+            print("\033[31mInvalid input format. Please enter the problem number and hint level separated by a space.\033[0m")
             return
         except Exception as e:
-            print(f"\033[91mAn error occurred: {e}\033[0m")
+            print(f"\033[31mAn error occurred: {e}\033[0m")
             return
 
         try:

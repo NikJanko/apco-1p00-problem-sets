@@ -1,5 +1,15 @@
-from helper_functions import ProblemStatement
+import sys
 import inspect
+from pathlib import Path
+
+# Setup cross-platform paths
+WORKSPACE_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(WORKSPACE_ROOT))
+
+from helper_functions import ProblemStatement
+
+FILES_DIR = WORKSPACE_ROOT / 'files'
+GENERATED_DIR = WORKSPACE_ROOT / 'generated_files'
 
 ps = ProblemStatement()
 
@@ -99,12 +109,12 @@ class Code_Problems:
     
 
     def one(self):
-        ps.display(1)
+        # ps.display(1)
         """
         Add your code here.
         """
         result = []
-        with open('../files/data_duo.txt', 'r') as f:
+        with open(FILES_DIR / 'data_duo.txt', 'r') as f:
             for line in f:
                 parts = line.strip().split()
                 a = int(parts[0])
@@ -113,12 +123,12 @@ class Code_Problems:
         return result 
 
     def two(self):
-        ps.display(2)
+        # ps.display(2)
         """
         Add your code here.
         """
         result = []
-        with open('../files/data_tri.txt', 'r') as f:
+        with open(FILES_DIR / 'data_tri.txt', 'r') as f:
             for line in f:
                 parts = line.strip().split()
                 a = int(parts[0])
@@ -128,7 +138,7 @@ class Code_Problems:
         return result
 
     def three(self):
-        ps.display(3)
+        # ps.display(3)
         """
         Add your code here.
         
@@ -140,14 +150,14 @@ class Code_Problems:
             return n * factorial(n - 1)
         
         result = []
-        with open('../files/data_solo.txt', 'r') as f:
+        with open(FILES_DIR / 'data_solo.txt', 'r') as f:
             for line in f:
                 n = int(line.strip())
                 result.append(factorial(n))
         return result
 
     def four(self):
-        ps.display(4)
+        # ps.display(4)
         """
         Add your code here.
         """
@@ -155,29 +165,30 @@ class Code_Problems:
         
         result = []
         
-        with open('../files/grades.csv', 'r') as f:
+        with open(FILES_DIR / 'grades.csv', 'r') as f:
             reader = csv.reader(f)
-            with open('./generated_files//grades_output.csv', 'w', newline='') as out:
+            with open(GENERATED_DIR / 'grades_output.csv', 'w', newline='') as out:
                 writer = csv.writer(out)
                 writer.writerow(['Last Name', 'First Name', 'Assignment 1', 'Assignment 2', 'Average'])
                 
                 for row in reader:
-                    lastname, firstname = row[0].split(', ')
-                    grade1 = int(row[1])
-                    grade2 = int(row[2])
+                    lastname = row[0].strip()
+                    firstname = row[1].strip()
+                    grade1 = int(row[2].strip())
+                    grade2 = int(row[3].strip())
                     avg = (grade1 + grade2) / 2
                     result.append(f"{firstname} {lastname}: {avg}")
                     writer.writerow([lastname, firstname, grade1, grade2, avg])
         return result
 
     def five(self, csv_additions: list=[['Jane', 0, 30],['Joe', 50, 40]]):
-        ps.display(5)
+        # ps.display(5)
         """
         Add your code here.
         """
         import csv
                 
-        with open('./generated_files//output.csv', 'w', newline='') as f:
+        with open(GENERATED_DIR / 'output.csv', 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(['Name', 'Assignment1', 'Assignment2'])
             # Input should be passed as parameter
@@ -186,12 +197,12 @@ class Code_Problems:
         return 0
 
     def six(self):
-        ps.display(6)
+        # ps.display(6)
         """
         Add your code here.
         """
         result = []
-        with open('../files/data_duo.txt', 'r') as f:
+        with open(FILES_DIR / 'data_duo.txt', 'r') as f:
             for line in f:
                 parts = line.strip().split()
                 a = int(parts[0])
@@ -200,7 +211,7 @@ class Code_Problems:
         return result
 
     def seven(self, to_generate: int, max_bound: int):
-        ps.display(7)
+        # ps.display(7)
         """
         Add your code here.
         """
@@ -208,13 +219,13 @@ class Code_Problems:
         
         random.seed(10)        
         numbers = random.sample(range(1, max_bound + 1), to_generate)
-        with open('./generated_files//recur.txt', 'w') as f:
+        with open(GENERATED_DIR / 'recur.txt', 'w') as f:
             for num in numbers:
                 f.write(str(num) + '\n')
         return numbers
 
     def eight(self):
-        ps.display(8)
+        # ps.display(8)
         """
         Add your code here.
         """
@@ -228,21 +239,21 @@ class Code_Problems:
             
             recursive_sort(arr, n - 1, asc)
         
-        with open('./generated_files//recur.txt', 'r') as f:
+        with open(GENERATED_DIR / 'recur.txt', 'r') as f:
             arr = []
             for line in f:
                 arr.append(int(line.strip()))
         
         recursive_sort(arr, len(arr), asc=True)
         
-        with open('./generated_files//recur2.txt', 'w') as f:
+        with open(GENERATED_DIR / 'recur2.txt', 'w') as f:
             for num in arr:
                 f.write(str(num) + '\n')
         
         return arr
 
     def nine(self, target: int=10):
-        ps.display(9)
+        # ps.display(9)
         """
         Add your code here.
         """
@@ -258,14 +269,14 @@ class Code_Problems:
             else:
                 return recursive_binary_search(arr, left, mid - 1, target)
         
-        with open('./generated_files//recur2.txt', 'r') as f:
+        with open(GENERATED_DIR / 'recur2.txt', 'r') as f:
             arr = [int(line.strip()) for line in f]
         
         result = recursive_binary_search(arr, 0, len(arr) - 1, target)
         return result
 
     def ten(self, phi: float, tolerance: float):
-        ps.display(10)
+        # ps.display(10)
         """
         Add your code here.
         """
@@ -278,7 +289,7 @@ class Code_Problems:
         return recurse_golden_ratio(phi, tolerance)
 
     def eleven(self, nth_fib_digit: int):
-        ps.display(11)
+        # ps.display(11)
         """
         Add your code here.
         optionally call global golden_ratio
@@ -293,7 +304,7 @@ class Code_Problems:
 
 
     def twelve(self, nth_fib_digit: int):
-        ps.display(12)
+        # ps.display(12)
         """
         Add your code here.
         """
@@ -306,12 +317,12 @@ class Code_Problems:
         return b
 
     def thirteen(self):
-        ps.display(13)
+        # ps.display(13)
         """
         Add your code here.
         """
         result = []
-        with open('../files/data_quad.txt', 'r') as f:
+        with open(FILES_DIR / 'data_quad.txt', 'r') as f:
             for line in f:
                 parts = line.strip().split()
                 nums = [int(p) for p in parts]
@@ -321,14 +332,14 @@ class Code_Problems:
 
 
     def fourteen(self, num_rows: int):
-        ps.display(14)
+        # ps.display(14)
         """
         Add your code here.
         """
         import random
         
         random.seed(10)
-        with open('./generated_files//recur2.txt', 'w') as f:
+        with open(GENERATED_DIR / 'recur2.txt', 'w') as f:
             generated = set()
             for row in range(num_rows):
                 row_nums = []
@@ -342,19 +353,19 @@ class Code_Problems:
         return True
 
     def fifteen(self, asc: bool=True):
-        ps.display(15)
+        # ps.display(15)
         """
         Add your code here.
         """
                 
-        with open('./generated_files//recur2.txt', 'r') as f:
+        with open(GENERATED_DIR / 'recur2.txt', 'r') as f:
             rows = []
             for line in f:
                 parts = line.strip().split()
                 row = [int(p) for p in parts]
                 rows.append(sorted(row, reverse=not asc))
         
-        with open('./generated_files//recur3.txt', 'w') as f:
+        with open(GENERATED_DIR / 'recur3.txt', 'w') as f:
             for row in rows:
                 row_strs = [str(n) for n in row]
                 f.write(' '.join(row_strs) + '\n')
@@ -362,11 +373,11 @@ class Code_Problems:
         return rows 
 
     def sixteen(self):
-        ps.display(16)
+        # ps.display(16)
         """
         Add your code here.
         """
-        with open('./generated_files//recur2.txt', 'r') as f:
+        with open(GENERATED_DIR / 'recur2.txt', 'r') as f:
             mode_dict = {}
             for line in f:
                 parts = line.strip().split()
@@ -377,7 +388,7 @@ class Code_Problems:
         return mode_dict
 
     def seventeen(self, stories: int=1, dimensions: list=[], triangle_height: int=0):
-        ps.display(17)
+        # ps.display(17)
         """
         Add your code here.
         """
@@ -403,7 +414,7 @@ class Code_Problems:
         return round(total_area, 2), round(roof_area, 2)
 
     def eighteen(self):
-        ps.display(18)
+        # ps.display(18)
         """
         Add your code here.
         """
@@ -420,14 +431,14 @@ class Code_Problems:
         # Reverse cipher to decode
         decode_map = {v: k for k, v in cipher_map.items()}
         
-        with open('../files/cipher_passage.txt', 'r') as f:
+        with open(FILES_DIR / 'cipher_passage.txt', 'r') as f:
             encoded = f.read()
         
         decoded = ''.join(decode_map.get(c, c) for c in encoded)
         return decoded
 
     def nineteen(self, input: str="possiblyFilePath"):
-        ps.display(19)
+        # ps.display(19)
         """
         Add your code here.
         """
@@ -442,9 +453,9 @@ class Code_Problems:
         }
         
         # Check if input is a file path
-        import os
-        if os.path.isfile(input):
-            with open(input, 'r') as f:
+        input_path = Path(input)
+        if input_path.is_file():
+            with open(input_path, 'r') as f:
                 input = f.read()
         
         # Encode using cipher map
@@ -452,7 +463,7 @@ class Code_Problems:
         return encoded
         
     def twenty(self, sentence: str="llohe rld!wo tsle deco", clear_text_word: str="lets"):
-        ps.display(20)
+        # ps.display(20)
         """
         Add your code here.
         """
@@ -490,7 +501,7 @@ class Code_Problems:
         return descrambled_sentence, magic_shift
 
     def twenty_one(self, a: int, b: int):
-        ps.display(21)
+        # ps.display(21)
         """
         Add your code here.
         """
@@ -500,7 +511,7 @@ class Code_Problems:
         return result
 
     def twenty_two(self, two_dimensional_list: list= [[1, 2, 3], [4, 5, 6], [7, 8, 9]]):
-        ps.display(22)
+        # ps.display(22)
         """
         Add your code here.
         """
@@ -536,7 +547,7 @@ class Code_Problems:
         return result
 
     def twenty_three(self, two_dimensional_list: list= [[1, 2, 3], [4, 5, 6], [7, 8, 9]]):
-        ps.display(23)
+        # ps.display(23)
         """
         Add your code here.
         """
@@ -573,7 +584,7 @@ class Code_Problems:
         return result
 
     def twenty_four(self, sentence: str):
-        ps.display(24)
+        # ps.display(24)
         """
         Add your code here.
         """
@@ -589,7 +600,7 @@ class Code_Problems:
         return result_string, vowel_count
 
     def twenty_five(self, people_who_own_cars: list= [["jimmy", "honda", "civic", 2010, "red"]]):
-        ps.display(25)
+        # ps.display(25)
         """
         Add your code here.
         """
@@ -615,7 +626,7 @@ class Code_Problems:
         return class_results
 
     def twenty_six(self, people_who_may_own_cars: list=[["jimmy", "honda", "civic", '2010x', "red"]]):
-        ps.display(26)
+        # ps.display(26)
         """
         Add your code here.
         
@@ -651,13 +662,13 @@ class Code_Problems:
         return class_results
 
     def twenty_seven(self):
-        ps.display(27)
+        # ps.display(27)
         """
         Add your code here.
         """
         result = []
         
-        with open('../files/except.txt', 'r') as f:
+        with open(FILES_DIR / 'except.txt', 'r') as f:
             for line in f:
                 value = line.strip()
                 try:
@@ -673,7 +684,7 @@ class Code_Problems:
     
 
     def twenty_eight(self, game = [1, 2, 3, 2, 1]):
-        ps.display(28)
+        # ps.display(28)
         """
         Add your code here.
         """
@@ -697,7 +708,7 @@ class Code_Problems:
         return ping_pong
 
     def twenty_nine(self):
-        ps.display(29)
+        # ps.display(29)
         """
         Add your code here.
         """
@@ -705,7 +716,7 @@ class Code_Problems:
         ping_pong = 0  # Reset counter is determined here
         
         out = []
-        with open('../files/data_quad.txt', 'r') as f:
+        with open(FILES_DIR / 'data_quad.txt', 'r') as f:
             for line in f:
                 parts = line.strip().split()
                 nums = [int(p) for p in parts]
@@ -725,7 +736,7 @@ class Code_Problems:
 
 
     def fix_me_1(self, list: list=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]):
-        ps.display("rest")
+        # ps.display("rest")
         """
         If we encounter a multiple of 8, double the next numbers until the next multiple of 8.
         if we encounter an odd number, halve it. 
@@ -746,7 +757,7 @@ class Code_Problems:
         return arr
 
     def fix_me_2(self, list: list=[1, 3, 6, 5, 5]):
-        ps.display("rest")
+        # ps.display("rest")
         """
         reverse a list then print the reversed list. use insert and pop to do this
         
@@ -759,7 +770,7 @@ class Code_Problems:
         return arr
 
     def fix_me_3(self, left: list=[1, 3, 5], right: list=[2, 4, 6, 7, 8]):
-        ps.display("rest")
+        # ps.display("rest")
         """
         combine two lists, interchanging which index to take. prioritize left side.
         
@@ -777,7 +788,7 @@ class Code_Problems:
 
     def fix_me_4(self, number: int):
         import random
-        ps.display("rest")
+        # ps.display("rest")
         """
         simplify this code. it is supposed to return the same thing as it currently does, but it is very messy and has some unnecessary parts. find and remove the unnecessary parts, and simplify the code as much as possible.
         """
@@ -785,7 +796,7 @@ class Code_Problems:
         return int(abs(number) % 2 == 0)
 
     def fix_me_5(self, keys: list=["a", "b", "c", 4], values: list=[1, 2, 3, "d"]):
-        ps.display("rest")
+        # ps.display("rest")
         """
         Given 2 lists, create a dictionary.
         
@@ -798,7 +809,7 @@ class Code_Problems:
         return new_dict, error_count
 
     def fix_me_6(self, name: str="John Doe"):
-        ps.display("rest")
+        # ps.display("rest")
         """
         given a string, output first_letter_of_lastname. firstname.
         """
@@ -808,7 +819,7 @@ class Code_Problems:
         return introduction
 
     def fix_me_7(self):
-        ps.display("rest")
+        # ps.display("rest")
         """
         simplify this code.
         this code should always return the string "final result".
@@ -818,7 +829,7 @@ class Code_Problems:
         
 
     def fix_me_8(self):
-        ps.display("rest")
+        # ps.display("rest")
         """
         this does a thing, there is a single error tho. find and fix it.
         """
@@ -834,7 +845,7 @@ class Code_Problems:
         global pip
         pip = value
 
-        ps.display("rest")
+        # ps.display("rest")
         """
         the yell function is missing something. it should return "AAAA" if pip is less than 5, and "OOOO" if pip is greater than or equal to 5. find and fix the error.
         """
@@ -845,7 +856,7 @@ class Code_Problems:
         return yell() #should be OOOO
 
     def fix_me_10(self, totally_a_number: str="teehee"):
-        ps.display("rest")
+        # ps.display("rest")
         """
         this should have some error handling, return 'not a number' if the input is not a number, otherwise return the number (VALUE ERROR)
         """
@@ -857,7 +868,7 @@ class Code_Problems:
             return 'not a number'
 
     def final_1(self):
-        ps.display("final")
+        # ps.display("final")
         """
         turn this for loop into a while loop.
         """
@@ -879,7 +890,7 @@ class Code_Problems:
         import random
         random.seed(10)
         arr = sorted([x for x in random.sample(range(1, 100), 30)])
-        ps.display("final")
+        # ps.display("final")
         """
         Turn this iterative function into a recursive function! woooo!
         """
@@ -915,7 +926,7 @@ class Code_Problems:
         return True if result1 == result2 else False
 
     def final_3(self):
-        ps.display("final")
+        # ps.display("final")
         """
         this list is a dictionary, convert it back into two lists.
         """

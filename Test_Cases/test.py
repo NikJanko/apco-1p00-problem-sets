@@ -8,18 +8,31 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PRACTICE_DIR = PROJECT_ROOT / "practice"
 
 # Change to practice directory so relative paths (../files, ./generated_files) work correctly
-os.chdir(PRACTICE_DIR)
+os.chdir(str(PRACTICE_DIR))
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from solutions.Nik_soln import Code_Problems as SolutionProblems
 from practice.code_problems import Code_Problems as PracticeProblems
+from helper_functions.run_me_first import Run_Me_First as RMF
 
 # Create temporary directories for solution and practice outputs
 SOLUTION_GEN_DIR = PROJECT_ROOT / "generated_files_solution"
 PRACTICE_GEN_DIR = PROJECT_ROOT / "generated_files_practice"
-TEMP_GEN_DIR = PRACTICE_DIR / "generated_files"
+# TEMP_GEN_DIR = PRACTICE_DIR / "generated_files"
+TEMP_GEN_DIR = PROJECT_ROOT / "generated_files"
+
+FILES_DIR= PROJECT_ROOT / "files"
+if not FILES_DIR.exists():
+    rmf = RMF()
+    rmf.create_files()
+    
+
+
+# Clean generated files directories at start
+if TEMP_GEN_DIR.exists():
+    shutil.rmtree(TEMP_GEN_DIR)
 
 os.makedirs(SOLUTION_GEN_DIR, exist_ok=True)
 os.makedirs(PRACTICE_GEN_DIR, exist_ok=True)
@@ -28,9 +41,7 @@ os.makedirs(PRACTICE_GEN_DIR, exist_ok=True)
 solution = SolutionProblems()
 practice = PracticeProblems()
 
-# Clean generated files directories at start
-if TEMP_GEN_DIR.exists():
-    shutil.rmtree(TEMP_GEN_DIR)
+
 shutil.rmtree(SOLUTION_GEN_DIR, ignore_errors=True)
 shutil.rmtree(PRACTICE_GEN_DIR, ignore_errors=True)
 os.makedirs(SOLUTION_GEN_DIR, exist_ok=True)
@@ -316,12 +327,16 @@ summary_lines.append("\n" + "=" * 80)
 for line in summary_lines:
     print(line)
 
-# Append to history.txt
-history_path = PROJECT_ROOT / "history.txt"
-if not history_path.exists():
-    with open(history_path, 'w') as f:
-        pass
-    
-with open(history_path, 'a') as f:
+
+history_path = PROJECT_ROOT / "history.txt"    
+
+with open(history_path, 'w') as f:
     for line in summary_lines:
         f.write(line + '\n')
+
+if TEMP_GEN_DIR.exists(): # Clean up temporary generated files directory
+    shutil.rmtree(TEMP_GEN_DIR)
+if SOLUTION_GEN_DIR.exists():
+    shutil.rmtree(SOLUTION_GEN_DIR)
+if PRACTICE_GEN_DIR.exists():
+    shutil.rmtree(PRACTICE_GEN_DIR)

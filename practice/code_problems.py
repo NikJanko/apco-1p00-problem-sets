@@ -1,4 +1,11 @@
+from enum import verify
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from helper_functions import ProblemStatement
+from helper_functions import verify_environment as VE
+from helper_functions import hint as hint
+import io
 import inspect
 
 ps = ProblemStatement()
@@ -6,6 +13,7 @@ ps = ProblemStatement()
 golden_ratio = 1.61803398875
 ping_pong = 10
 pip = 100
+
 
 class Code_Problems:
     def __init__(self):
@@ -95,7 +103,8 @@ class Code_Problems:
     def print_all_problems(self, print_to_file: bool=False):
         if print_to_file:
             try:
-                with open("all_problems.txt", "w") as f:
+                output_file = Path("./all_problems.txt").resolve()
+                with open(output_file, "w") as f:
                     for num in sorted(self.question.keys()):
                         f.write(f"Problem {num}:\n{ps.display(num)}\n\n{'-'*50}\n\n")
                 print("\033[92mAll problems have been printed to 'all_problems.txt'.\033[0m")
@@ -115,7 +124,7 @@ class Code_Problems:
         
     """
     START CODING Under HERE
-    """
+    """ 
     
 
     def one(self):
@@ -613,7 +622,45 @@ class Code_Problems:
         
         dict_keys_list = []
         dict_values_list = []
-        
-        
 
         return True if (True if keys_list == dict_keys_list else False) and (True if values_list == dict_values_list else False) else False
+
+
+
+"""
+This is where you will be able to run your code!
+"""
+
+if __name__ == "__main__":
+    print("test")
+    verify = VE.Verify_Environment()
+    verify.verify_environment(dir_name=verify.dir_name, dir_name2=verify.dir_name2)
+    problems = Code_Problems()
+    hint = hint.Hint_Manager()
+    """
+    WORKFLOW:
+    1. Uncomment a problem below to run it (problems 1-29 are regular, 30-39 are 'fix me', 40-42 are final) 
+        - the problem statement will print in the terminal, in which, you'll know what to do.
+    2. Write code in code_problems.py
+    3. Use hints with hint.ask_hint() if stuck (try before checking solutions folder) 
+        - This is open book, (but dont use AI).
+    4. When you complete all problems, go to the Test_Cases/test.py file and run it up! 
+        - a history will be stored in 'history.txt' 
+        - you'll be testing your solutions against mine.
+        
+    Questions are rated by difficulty, higher level the more involved or harder the problem is. Do not be sad or discouraged if you find a problem hard, just try your best and use the resources available to you. The goal is to learn!
+    
+    GUIDELINES:
+    - Problems should print AND return results (non-file problems)
+    - File-generation problems only need to create files in ../generated_files
+    - Don't use AI to generate code; use notes, hints, docs, StackOverflow, and solutions folder as reference
+    - For debugging: use verify.fix_files() to reset files/folders (will clear generated_files)
+    """    
+    # CHOOSE & RUN A PROBLEM :
+    # problems.run_problem(1, 'arguments here if applicable')
+    
+    # GET A HINT :
+    # hint.ask_hint()
+    
+    # RESET FILES/FOLDERS (WARNING: clears both folders) :
+    # verify.fix_files()

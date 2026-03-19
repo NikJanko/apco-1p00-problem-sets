@@ -92,6 +92,26 @@ class Code_Problems:
         
         return tuple(sanitized)
         
+    def print_all_problems(self, print_to_file: bool=False):
+        if print_to_file:
+            try:
+                with open("all_problems.txt", "w") as f:
+                    for num in sorted(self.question.keys()):
+                        f.write(f"Problem {num}:\n{ps.display(num)}\n\n{'-'*50}\n\n")
+                print("\033[92mAll problems have been printed to 'all_problems.txt'.\033[0m")
+            except IOError as e:
+                print(f"\033[91mError writing to file: {e}\033[0m")
+            except Exception as e:
+                print(f"\033[91mAn unexpected error occurred: {e}\033[0m")
+                
+                
+        for num in sorted(self.question.keys()):
+            if not print_to_file:
+                print(f"\033[94mProblem {num}:\033[0m")
+                print(ps.display(num))
+                print("\n" + "-"*50 + "\n")
+            else:
+                break
         
     """
     START CODING Under HERE

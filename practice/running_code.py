@@ -42,6 +42,9 @@ if __name__ == "__main__":
     - Don't use AI to generate code; use notes, hints, docs, StackOverflow, and solutions folder as reference
     - For debugging: use verify.fix_files() to reset files/folders (will clear generated_files)
     """
+    # Uncomment below to see all problem statements - creates a file 'all_problems.txt' in the parent directory with all problem statements.
+    # problems.print_all_problems(print_to_file=False)
+    
     # CHOOSE & RUN A PROBLEM :
     # problems.run_problem(1, 'arguments here if applicable')
     

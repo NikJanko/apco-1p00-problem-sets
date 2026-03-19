@@ -66,5 +66,21 @@ class ProblemStatement:
         
 
     def display(self, number):
-        print(f"\033[0mProblem {number}:\n{self.pq[number]}\n\033[0m")
+        import re
+        
+        def strip_ansi(text):
+            return re.sub(r'\033\[[0-9;]*m', '', text)
+        
+        if number in self.pq:
+            print(f"\033[0mProblem {number}:\n{self.pq[number]}\n\033[0m")
+            print("-"*50)
+            return strip_ansi(self.pq[number])
+        elif number in [*range(30, 43), 'rest', 'final']:
+            print(f"\033[0mProblem {number}:\n{self.pq['rest']}\n\033[0m")
+            print("-"*50)
+            return strip_ansi(self.pq['rest'])
+        else:
+            print(f"\033[0mProblem {number} does not exist. Please choose a valid problem number.\n\033[0m")
+            return None
+
         

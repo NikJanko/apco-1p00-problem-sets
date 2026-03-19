@@ -685,7 +685,7 @@ if __name__ == "__main__":
         
     
     # GET A HINT :
-    # hint.ask_hint()
+    hint.ask_hint()
     
     # RESET FILES/FOLDERS (WARNING: clears both folders) :
     # verify.fix_files()

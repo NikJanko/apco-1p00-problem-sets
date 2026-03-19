@@ -14,6 +14,13 @@ ping_pong = 10
 pip = 100
 
 
+
+# if you need it,
+WORKSPACE_ROOT = Path(__file__).parent.parent
+FILES_DIR = WORKSPACE_ROOT / 'files'
+GENERATED_DIR = WORKSPACE_ROOT / 'generated_files'
+# with open(FILES_DIR / 'data_duo.txt', 'r'): # example usage.
+
 """
 Start coding at the very bottom "if __name__ == "__main__":" section.
 """
@@ -665,9 +672,16 @@ if __name__ == "__main__":
     - File-generation problems only need to create files in ../generated_files
     - Don't use AI to generate code; use notes, hints, docs, StackOverflow, and solutions folder as reference
     - For debugging: use verify.fix_files() to reset files/folders (will clear generated_files)
+    
+    --------------------------------------------------------------------------------------------------------
+    ##### if you need it; we have some global variables to make it easier to read and write to files. #####
+    #####    FILES_DIR = WORKSPACE_ROOT / 'files'
+    #####    GENERATED_DIR = WORKSPACE_ROOT / 'generated_files'
+    ##### with open(FILES_DIR / 'data_duo.txt', 'r'): # example usage. #####
+    --------------------------------------------------------------------------------------------------------
     """    
-    # CHOOSE & RUN A PROBLEM :
-    # problems.run_problem(7, 'arguments here if applicable', 'more than 1 argument')
+    # CHOOSE & RUN A PROBLEM : problems.run_problem(7, 'argument 1', 'argument 2', ...)
+    print(problems.run_problem(1))
         
     
     # GET A HINT :

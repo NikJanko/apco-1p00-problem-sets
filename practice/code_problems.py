@@ -47,7 +47,10 @@ class Code_Problems:
             else:
                 print("\033[91mProblem number not found. Please choose a valid problem number.\033[0m")
         except (TypeError, ValueError) as e:
-            print(f"\033[91mError: {e}. Please check the arguments you provided for problem {problem_number}.\033[0m")
+            if problem_number in range(30, 43):
+                print(f"\033[91mError in problem {problem_number}: {e}. This is expected since this problem has intentional errors to fix. Please check your code and try again.\033[0m")
+            else:
+                print(f"\033[91mError: {e}. Please check the arguments you provided for problem {problem_number}.\033[0m")
     
     def _sanitize_args(self, args, method):
         """Sanitize and convert input arguments to match method parameter types."""
@@ -126,7 +129,11 @@ class Code_Problems:
             else:
                 break
         
+        
+        
     """
+    START CODING Under HERE
+    START CODING Under HERE
     START CODING Under HERE
     """ 
     
@@ -576,7 +583,7 @@ class Code_Problems:
         result1 = 0
         for i in range(10, 100, 2):
             result1 += i
-            print(f"result is currently: {result1}, while on number: {i}")
+            # print(f"result is currently: {result1}, while on number: {i}") # this can be uncommented for your aid
         
         result2 = 0
         # while loop here
@@ -636,7 +643,6 @@ This is where you will be able to run your code!
 """
 
 if __name__ == "__main__":
-    print("test")
     verify = VE.Verify_Environment()
     verify.verify_environment(dir_name=verify.dir_name, dir_name2=verify.dir_name2)
     problems = Code_Problems()
@@ -661,7 +667,8 @@ if __name__ == "__main__":
     - For debugging: use verify.fix_files() to reset files/folders (will clear generated_files)
     """    
     # CHOOSE & RUN A PROBLEM :
-    # problems.run_problem(1, 'arguments here if applicable')
+    # problems.run_problem(7, 'arguments here if applicable', 'more than 1 argument')
+        
     
     # GET A HINT :
     # hint.ask_hint()

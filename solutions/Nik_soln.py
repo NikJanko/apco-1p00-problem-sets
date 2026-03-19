@@ -187,14 +187,16 @@ class Code_Problems:
         Add your code here.
         """
         import csv
-                
+        
+        row_count = 0
         with open(GENERATED_DIR / 'output.csv', 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(['Name', 'Assignment1', 'Assignment2'])
             # Input should be passed as parameter
             for row in csv_additions:
+                row_count += 1
                 writer.writerow(row)
-        return 0
+        return row_count
 
     def six(self):
         # ps.display(6)
@@ -875,13 +877,13 @@ class Code_Problems:
         result1 = 0
         for i in range(10, 100, 2):
             result1 += i
-            print(f"result is currently: {result1}, while on number: {i}")
+            # print(f"result is currently: {result1}, while on number: {i}") # this can be uncommented for your aid
         
         result2 = 0
         i = 10
         while i < 100:
             result2 += i
-            print(f"result is currently: {result2}, while on number: {i}")
+            # print(f"result is currently: {result2}, while on number: {i}") # this can be uncommented for your aid
             i += 2
 
         return True if result1 == result2 else False

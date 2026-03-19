@@ -13,7 +13,7 @@ os.chdir(str(PRACTICE_DIR))
 # Add parent directory to path for imports
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from solutions.Nik_soln import Code_Problems as SolutionProblems
+from Nik_soln import Code_Problems as SolutionProblems
 from practice.code_problems import Code_Problems as PracticeProblems
 from helper_functions.run_me_first import Run_Me_First as RMF
 
